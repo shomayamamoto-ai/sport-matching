@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sport Matching｜サイト土台（素材待ち）</title>
+<meta name="description" content="スポーツ個人指導マッチングサイトの土台。素材が届き次第、内容を差し替えます。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============================================
+     ヘッダー
+     ============================================ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+
+    <a class="header__logo" href="#top">
+      <!-- TODO: 素材が届いたらロゴ画像に差し替え
+           <img src="assets/images/logo.svg" alt="サービス名"> -->
+      <span class="header__logo-text">LOGO</span>
+    </a>
+
+    <!-- スマホ用メニューボタン -->
+    <button class="header__toggle" id="navToggle"
+            type="button"
+            aria-label="メニューを開く"
+            aria-expanded="false"
+            aria-controls="globalNav">
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+    </button>
+
+    <nav class="nav" id="globalNav" aria-label="メインメニュー">
+      <ul class="nav__list">
+        <!-- TODO: 元サイトのメニュー項目に差し替え -->
+        <li class="nav__item"><a class="nav__link" href="#section-1">メニュー1</a></li>
+        <li class="nav__item"><a class="nav__link" href="#section-2">メニュー2</a></li>
+        <li class="nav__item"><a class="nav__link" href="#section-3">メニュー3</a></li>
+        <li class="nav__item"><a class="nav__link" href="#section-4">メニュー4</a></li>
+        <li class="nav__item nav__item--cta">
+          <a class="btn btn--primary btn--sm" href="#contact">お問い合わせ</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================================
+       ヒーロー（ファーストビュー）
+       ============================================ -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__body">
+        <p class="hero__lead">＜ここに小見出しが入ります＞</p>
+        <h1 class="hero__title">
+          ここにキャッチコピーが<br>
+          入ります
+        </h1>
+        <p class="hero__text">
+          ここに補足の説明文が入ります。<br>
+          素材が届き次第、元サイトの文言に差し替えます。
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contact">メインのボタン</a>
+          <a class="btn btn--ghost" href="#section-1">サブのボタン</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <!-- TODO: ヒーロー画像に差し替え -->
+        <div class="placeholder placeholder--hero">画像が入ります</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       セクション1〜4（構成は素材確認後に確定）
+       ============================================ -->
+  <section class="section" id="section-1">
+    <div class="container">
+      <h2 class="section__title">セクション見出し 1</h2>
+      <p class="section__desc">ここにセクションの説明文が入ります。</p>
+      <div class="cards">
+        <article class="card">
+          <div class="placeholder placeholder--card">画像</div>
+          <h3 class="card__title">項目タイトル</h3>
+          <p class="card__text">項目の説明文が入ります。</p>
+        </article>
+        <article class="card">
+          <div class="placeholder placeholder--card">画像</div>
+          <h3 class="card__title">項目タイトル</h3>
+          <p class="card__text">項目の説明文が入ります。</p>
+        </article>
+        <article class="card">
+          <div class="placeholder placeholder--card">画像</div>
+          <h3 class="card__title">項目タイトル</h3>
+          <p class="card__text">項目の説明文が入ります。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tinted" id="section-2">
+    <div class="container">
+      <h2 class="section__title">セクション見出し 2</h2>
+      <p class="section__desc">ここにセクションの説明文が入ります。</p>
+      <div class="placeholder placeholder--block">コンテンツが入ります</div>
+    </div>
+  </section>
+
+  <section class="section" id="section-3">
+    <div class="container">
+      <h2 class="section__title">セクション見出し 3</h2>
+      <p class="section__desc">ここにセクションの説明文が入ります。</p>
+      <div class="placeholder placeholder--block">コンテンツが入ります</div>
+    </div>
+  </section>
+
+  <section class="section section--tinted" id="section-4">
+    <div class="container">
+      <h2 class="section__title">セクション見出し 4</h2>
+      <p class="section__desc">ここにセクションの説明文が入ります。</p>
+      <div class="placeholder placeholder--block">コンテンツが入ります</div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       お問い合わせ導線
+       ============================================ -->
+  <section class="cta" id="contact">
+    <div class="container cta__inner">
+      <h2 class="cta__title">ここに最後の一押しの見出し</h2>
+      <p class="cta__text">ここに補足文が入ります。</p>
+      <a class="btn btn--primary btn--lg" href="#">メインのボタン</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================
+     フッター
+     ============================================ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo-text">LOGO</span>
+      <p class="footer__note">ここに一言説明が入ります。</p>
+    </div>
+    <nav class="footer__nav" aria-label="フッターメニュー">
+      <ul class="footer__list">
+        <li><a href="#">リンク1</a></li>
+        <li><a href="#">リンク2</a></li>
+        <li><a href="#">リンク3</a></li>
+        <li><a href="#">リンク4</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="footer__copyright">&copy; <span id="year">2026</span> Sport Matching</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
