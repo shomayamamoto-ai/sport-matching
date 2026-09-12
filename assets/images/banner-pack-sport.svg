@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500" role="img" aria-label="最大15%OFF まとめて購入 お得なパックプランがスタート">
+  <defs>
+    <linearGradient id="pk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#BFEDE0"/><stop offset="1" stop-color="#8FDCC8"/>
+    </linearGradient>
+    <clipPath id="f3"><rect width="1200" height="500"/></clipPath>
+    <g id="star4">
+      <path d="M0 -34 C 5 -12, 12 -5, 34 0 C 12 5, 5 12, 0 34 C -5 12, -12 5, -34 0 C -12 -5, -5 -12, 0 -34 Z"/>
+    </g>
+  </defs>
+  <g clip-path="url(#f3)">
+    <rect width="1200" height="500" fill="url(#pk)"/>
+
+    <!-- 背景の光と丸 -->
+    <g fill="#FFFFFF" opacity=".38">
+      <circle cx="150" cy="90" r="34"/><circle cx="1080" cy="112" r="26"/>
+      <circle cx="930" cy="66" r="16"/><circle cx="300" cy="430" r="22"/>
+    </g>
+    <g stroke="#FFFFFF" stroke-width="16" opacity=".3">
+      <path d="M760 -30 L 600 530"/><path d="M840 -30 L 680 530"/>
+    </g>
+
+    <!-- キラキラ -->
+    <g fill="#FFD65E">
+      <use href="#star4" transform="translate(392 96) scale(1.15)"/>
+      <use href="#star4" transform="translate(700 74) scale(.8)"/>
+      <use href="#star4" transform="translate(1010 240) scale(1)"/>
+      <use href="#star4" transform="translate(268 300) scale(.7)"/>
+      <use href="#star4" transform="translate(1120 400) scale(.85)"/>
+      <use href="#star4" transform="translate(560 428) scale(.6)"/>
+    </g>
+
+    <!-- 最大15%OFF のバッジ -->
+    <g transform="translate(128 212) scale(.92)">
+      <path fill="#FFE20A" d="M0 -118 L26 -101 L56 -111 L70 -83 L102 -80 L100 -48 L124 -28 L106 -1 L120 28 L91 42 L86 74 L54 71 L32 95 L6 77 L-24 87 L-38 59 L-70 55 L-67 23 L-91 3 L-73 -24 L-87 -53 L-58 -67 L-53 -99 L-21 -96 Z"/>
+      <text x="0" y="-42" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#0A5B4C">最大</text>
+      <text x="0" y="12"  text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#0A5B4C">15%</text>
+      <text x="0" y="58"  text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#0A5B4C">OFF</text>
+    </g>
+
+    <!-- メインの文字（重ならないよう、文字幅を計算して配置） -->
+    <g font-family="Arial, sans-serif" font-weight="bold">
+      <!-- 上段 -->
+      <text x="700" y="140" text-anchor="middle" font-size="64" fill="#FFFFFF" stroke="#0A5B4C" stroke-width="14" paint-order="stroke">まとめて購入</text>
+      <text x="700" y="140" text-anchor="middle" font-size="64" fill="#FFFFFF">まとめて購入</text>
+
+      <!-- 下段：お得な / パックプラン / がスタート -->
+      <text x="240" y="266" font-size="56" fill="#FFFFFF" stroke="#0A5B4C" stroke-width="13" paint-order="stroke">お得な</text>
+      <text x="240" y="266" font-size="56" fill="#FFFFFF">お得な</text>
+
+      <text x="418" y="276" font-size="78" fill="#FFE20A" stroke="#0A5B4C" stroke-width="17" paint-order="stroke">パックプラン</text>
+      <text x="418" y="276" font-size="78" fill="#FFE20A">パックプラン</text>
+
+      <text x="896" y="266" font-size="56" fill="#FFFFFF" stroke="#0A5B4C" stroke-width="13" paint-order="stroke">がスタート</text>
+      <text x="896" y="266" font-size="56" fill="#FFFFFF">がスタート</text>
+
+      <text x="640" y="368" text-anchor="middle" font-size="38" fill="#0A5B4C">継続的なトレーニングで、もっと上達</text>
+    </g>
+
+    <!-- 下の黄色い帯 -->
+    <rect y="440" width="1200" height="60" fill="#FFE20A"/>
+  </g>
+</svg>

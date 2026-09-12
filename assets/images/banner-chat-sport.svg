@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-label="コーチ選びに困ったら、ドリームコーチング事務局があなたのコーチ選びをお手伝いします">
+  <defs>
+    <linearGradient id="cb" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E6F5F1"/><stop offset="1" stop-color="#BEE6DA"/>
+    </linearGradient>
+    <clipPath id="f4"><rect width="1200" height="420"/></clipPath>
+  </defs>
+  <g clip-path="url(#f4)">
+    <rect width="1200" height="420" fill="url(#cb)"/>
+    <g fill="#FFFFFF" opacity=".45">
+      <circle cx="1130" cy="60" r="40"/><circle cx="620" cy="380" r="30"/><circle cx="90" cy="330" r="24"/>
+    </g>
+
+    <!-- 吹き出し -->
+    <g transform="translate(40 24)">
+      <rect x="0" y="0" width="640" height="98" rx="49" fill="#FFFFFF" stroke="#14181B" stroke-width="8"/>
+      <path d="M96 96 l6 46 l52 -44 Z" fill="#FFFFFF" stroke="#14181B" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M100 100 h50" stroke="#FFFFFF" stroke-width="10"/>
+      <text x="42" y="66" font-family="Arial, sans-serif" font-size="46" font-weight="bold" fill="#14181B">
+        <tspan fill="#0E8C74">コーチ選び</tspan><tspan>に困ったら…</tspan>
+      </text>
+    </g>
+
+    <!-- 本文 -->
+    <g font-family="Arial, sans-serif" font-weight="bold" fill="#14181B">
+      <text x="44" y="216" font-size="42">ドリームコーチング事務局が</text>
+      <text x="44" y="272" font-size="42">あなたの<tspan fill="#0A5B4C">コーチ選び</tspan>をお手伝い</text>
+    </g>
+    <g transform="translate(44 300)">
+      <rect width="600" height="60" rx="8" fill="#0FA588"/>
+      <text x="24" y="42" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#FFFFFF">お気軽にチャットでご相談ください！</text>
+    </g>
+
+    <!-- オペレーターのイラスト -->
+    <g transform="translate(830 40)">
+      <!-- 体 -->
+      <path d="M40 380 C 40 288, 104 232, 176 232 C 248 232, 312 288, 312 380 Z" fill="#FFC93C"/>
+      <path d="M136 236 l40 60 l40 -60 c-26 -10 -54 -10 -80 0 Z" fill="#FFFFFF"/>
+      <!-- 手 -->
+      <path d="M300 316 c 40 -16 72 -6 92 12" stroke="#FFFFFF" stroke-width="34" stroke-linecap="round" fill="none"/>
+      <circle cx="404" cy="330" r="26" fill="#FFFFFF" stroke="#14181B" stroke-width="7"/>
+      <!-- 髪 -->
+      <path d="M56 148 C 56 62, 296 62, 296 148 L 296 214 C 280 168, 72 168, 56 214 Z" fill="#14181B"/>
+      <!-- 顔 -->
+      <ellipse cx="176" cy="164" rx="112" ry="118" fill="#FFFFFF" stroke="#14181B" stroke-width="8"/>
+      <path d="M64 132 C 84 46, 268 46, 288 132 C 260 96, 92 96, 64 132 Z" fill="#14181B"/>
+      <!-- 目・口 -->
+      <path d="M116 176 q18 -22 36 0" stroke="#14181B" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M200 176 q18 -22 36 0" stroke="#14181B" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M156 214 q20 18 40 0"  stroke="#14181B" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <!-- ヘッドセット -->
+      <path d="M52 172 C 52 66, 300 66, 300 172" stroke="#FFC93C" stroke-width="20" fill="none" stroke-linecap="round"/>
+      <rect x="18" y="150" width="52" height="76" rx="24" fill="#FFC93C" stroke="#14181B" stroke-width="7"/>
+      <rect x="282" y="150" width="52" height="76" rx="24" fill="#FFC93C" stroke="#14181B" stroke-width="7"/>
+      <path d="M44 226 C 44 286, 116 292, 136 254" stroke="#14181B" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <circle cx="142" cy="252" r="14" fill="#14181B"/>
+    </g>
+  </g>
+</svg>

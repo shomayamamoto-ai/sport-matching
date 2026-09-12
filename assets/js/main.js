@@ -96,7 +96,41 @@
   }
 
   /* ==========================================================
-     3. チャットウィジェット
+     3. コーチ一覧の競技しぼり込み
+     ========================================================== */
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#sportChips .chip'));
+  var grid  = document.getElementById('coachGrid');
+
+  if (chips.length && grid) {
+    var tiles      = Array.prototype.slice.call(grid.querySelectorAll('.coach-tile'));
+    var countLabel = document.getElementById('coachCount');
+    var noResult   = document.getElementById('coachEmpty');
+
+    var filterCoaches = function (sport) {
+      var shown = 0;
+      tiles.forEach(function (tile) {
+        var list  = (tile.getAttribute('data-sports') || '').split(',');
+        var match = sport === 'all' || list.indexOf(sport) !== -1;
+        // カードは <li> の中にあるので、li ごと出し入れする
+        tile.parentNode.hidden = !match;
+        if (match) { shown++; }
+      });
+      if (countLabel) { countLabel.textContent = String(shown); }
+      if (noResult)   { noResult.hidden = shown > 0; }
+    };
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        chips.forEach(function (other) {
+          other.classList.toggle('is-active', other === chip);
+        });
+        filterCoaches(chip.getAttribute('data-sport'));
+      });
+    });
+  }
+
+  /* ==========================================================
+     4. チャットウィジェット
      ========================================================== */
   var chat      = document.getElementById('chat');
   var chatClose = document.getElementById('chatClose');
@@ -150,7 +184,7 @@
   }
 
   /* ==========================================================
-     4. フッターの著作権表記の年を自動更新
+     5. フッターの著作権表記の年を自動更新
      ========================================================== */
   var year = document.getElementById('year');
   if (year) { year.textContent = String(new Date().getFullYear()); }

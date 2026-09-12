@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+/* ============================================================
+   SPORT MATCHING（独自ブランド版）のテーマ
+   style.css のあとに読み込んで、配色だけを差し替えます。
+   ============================================================ */
+:root {
+  --c-cyan:        #0FA588;  /* メインのグリーン */
+  --c-cyan-dark:   #0C8B72;
+  --c-blue:        #0E8C74;  /* バッジ・リンク */
+  --c-blue-deep:   #0A5B4C;
+  --c-orange:      #FF7A2F;  /* CTAボタン */
+  --c-orange-dark: #E9661A;
+  --c-yellow:      #FFC93C;
+  --c-red:         #D93B3B;
+  --c-teal-deep:   #0A332C;  /* 営業時間バー */
+
+  --c-text:        #1A211E;
+  --c-text-sub:    #6A7873;
+  --c-bg-tint:     #E6F5F1;  /* 薄いグリーンの背景 */
+  --c-line:        #E2E9E6;
+  --c-line-cyan:   #A7DDD2;  /* グリーンの枠線 */
+}
+
+/* style.css で色を直接書いている箇所を上書きする ------------- */
+.section__title--marker {
+  background: linear-gradient(transparent 52%, #A8E8D7 52%, #A8E8D7 90%, transparent 90%);
+}
+
+.btn--outline:hover,
+.tab:hover,
+.chip:hover { background: #F1FAF7; }
+
+.panel--tinted,
+.tag--soft,
+.table th { background: #EBF7F3; }
+
+.input:focus,
+.select:focus,
+.textarea:focus { box-shadow: 0 0 0 3px rgba(15, 165, 136, .25); }
+
+.chat__avatar { background: #EDF6F2; }
+
+/* CTAボタンの文字は、オレンジの上でも読みやすい白にする */
+.btn--orange { color: #fff; }
+.register-btn { color: #fff; }
+.register-btn__mark { color: var(--c-text); }
+
+.demo-note {
+  background: #EDF7F3;
+  border-bottom-color: #BFE0D6;
+  color: #2F5D51;
+}
