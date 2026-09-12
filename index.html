@@ -3,165 +3,655 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sport Matching｜サイト土台（素材待ち）</title>
-<meta name="description" content="スポーツ個人指導マッチングサイトの土台。素材が届き次第、内容を差し替えます。">
+<title>ドリームコーチング｜トップアスリートによるコーチングサービス</title>
+<meta name="description" content="トップアスリートによる個人指導が受けられるコーチングサービス。苦手を克服、もっとスキルをあげたい、どんな課題や悩みでも優秀なコーチが親切＆丁寧に寄り添います。">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<!-- ============================================
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<!-- ============================================================
+     アイコンの定義（画面には表示されません）
+     ============================================================ -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="i-swim" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 28c0-10.5 8.5-19 19-19s19 8.5 19 19"/>
+      <path d="M4 28h40"/>
+      <circle cx="16" cy="25" r="5.5"/><circle cx="32" cy="25" r="5.5"/><path d="M21.5 25h5"/>
+      <path d="M6 38c3 0 3 2.5 6 2.5S15 38 18 38s3 2.5 6 2.5S27 38 30 38s3 2.5 6 2.5S39 38 42 38"/>
+    </g>
+    <g id="i-run" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 34v-9l7 3 6-4 9 6h13a5 5 0 0 1 5 5v3H5z"/>
+      <path d="M12 28l3 4M18 24l3 5M27 30l2 3"/>
+    </g>
+    <g id="i-baseball" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="17"/>
+      <path d="M11 13c5 5 6.5 16 2 22M37 13c-5 5-6.5 16-2 22"/>
+    </g>
+    <g id="i-soccer" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="17"/>
+      <path d="M24 14l8 5.8-3 9.4h-10l-3-9.4z" fill="currentColor" stroke="none"/>
+      <path d="M24 7v7M9.5 18.5l6.5 4.5M38.5 18.5L32 23M15 40l4-10M33 40l-4-10"/>
+    </g>
+    <g id="i-athletics" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="27" r="14"/>
+      <path d="M24 27v-8M24 27l6 4M19 6h10M24 6v6M37 14l3-3"/>
+    </g>
+    <g id="i-pe" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 16c-9 6-9 20 0 26"/>
+      <path d="M36 16c9 6 9 20 0 26"/>
+      <rect x="7" y="6" width="8" height="12" rx="4"/>
+      <rect x="33" y="6" width="8" height="12" rx="4"/>
+    </g>
+    <g id="i-dance" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="27" cy="9" r="4.5"/>
+      <path d="M27 14v10l7 7M27 24l-6 6 3 10M21 30l-8-3M34 31l1 9"/>
+      <path d="M40 8v11a4 4 0 1 1-3-3.9V8z" fill="currentColor" stroke="none" opacity=".55"/>
+    </g>
+    <g id="i-volleyball" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="17"/>
+      <path d="M24 7c-6 9-6 21 0 34M8 17c9 3 21 3 31-3M8 32c8-6 22-8 32-2"/>
+    </g>
+    <g id="i-person" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="15" r="7"/><path d="M9 41c0-8.3 6.7-15 15-15s15 6.7 15 15"/>
+    </g>
+    <g id="i-people" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="17" cy="15" r="6.5"/><path d="M4 40c0-7.2 5.8-13 13-13s13 5.8 13 13"/>
+      <circle cx="34" cy="17" r="5.5"/><path d="M31 28.5c7 .6 13 5.7 13 11.5"/>
+    </g>
+    <g id="i-event" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 34c0-9.9 8.1-18 18-18s18 8.1 18 18z"/><path d="M3 40h42M24 16V7M17 10l7 6M31 10l-7 6"/>
+    </g>
+    <g id="i-guide" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 5l16 6v13c0 10-6.8 17.6-16 20-9.2-2.4-16-10-16-20V11z"/><path d="M17 24l5 5 10-10"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- ============================================================
      ヘッダー
-     ============================================ -->
-<header class="header" id="header">
-  <div class="container header__inner">
-
-    <a class="header__logo" href="#top">
-      <!-- TODO: 素材が届いたらロゴ画像に差し替え
-           <img src="assets/images/logo.svg" alt="サービス名"> -->
-      <span class="header__logo-text">LOGO</span>
-    </a>
-
-    <!-- スマホ用メニューボタン -->
-    <button class="header__toggle" id="navToggle"
-            type="button"
-            aria-label="メニューを開く"
-            aria-expanded="false"
-            aria-controls="globalNav">
-      <span class="header__toggle-bar"></span>
-      <span class="header__toggle-bar"></span>
-      <span class="header__toggle-bar"></span>
-    </button>
-
-    <nav class="nav" id="globalNav" aria-label="メインメニュー">
-      <ul class="nav__list">
-        <!-- TODO: 元サイトのメニュー項目に差し替え -->
-        <li class="nav__item"><a class="nav__link" href="#section-1">メニュー1</a></li>
-        <li class="nav__item"><a class="nav__link" href="#section-2">メニュー2</a></li>
-        <li class="nav__item"><a class="nav__link" href="#section-3">メニュー3</a></li>
-        <li class="nav__item"><a class="nav__link" href="#section-4">メニュー4</a></li>
-        <li class="nav__item nav__item--cta">
-          <a class="btn btn--primary btn--sm" href="#contact">お問い合わせ</a>
-        </li>
-      </ul>
-    </nav>
-
+     ============================================================ -->
+<header class="header">
+  <div class="header__main">
+    <div class="container header__row">
+      <a class="logo" href="#top">
+        <span class="logo__tagline">トップアスリートによるコーチングサービス</span>
+        <span class="logo__body">
+          <span class="logo__name">Dream Coaching</span>
+          <span class="logo__by">by<span class="logo__ntv">日テレ</span></span>
+        </span>
+      </a>
+      <div class="header__actions">
+        <a class="btn btn--orange btn--pill header__signup" href="#register">新規登録</a>
+        <button class="hamburger" id="menuBtn" type="button"
+                aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="header__welcome">
+    <div class="container">
+      ようこそドリームコーチングへ
+      <a class="link" href="#register">新規登録</a> /
+      <a class="link" href="#login">ログイン</a>
+    </div>
   </div>
 </header>
 
-<main id="top">
+<!-- ============================================================
+     ドロワーメニュー
+     ============================================================ -->
+<div class="drawer-overlay" id="drawerOverlay" hidden></div>
+<nav class="drawer" id="drawer" aria-label="メインメニュー" hidden>
+  <button class="drawer__close" id="drawerClose" type="button" aria-label="メニューを閉じる">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+  </button>
+  <div class="drawer__head">
+    <p class="drawer__welcome">ようこそドリームコーチングへ</p>
+    <a class="btn btn--orange btn--block" href="#register">新規登録</a>
+    <a class="drawer__login link" href="#login">ログインはこちら</a>
+  </div>
+  <p class="drawer__group">トレーニングを探す</p>
+  <ul class="drawer__list">
+    <li><a href="#categories">競技カテゴリーから探す</a></li>
+    <li><a href="#coaches">コーチから探す</a></li>
+  </ul>
+  <p class="drawer__group">マイページ</p>
+  <ul class="drawer__list">
+    <li><a href="#mypage">マイページTOP</a></li>
+    <li><a href="#mypage">お気に入り一覧</a></li>
+    <li><a href="#mypage">予約履歴一覧（個人指導）</a></li>
+    <li><a href="#mypage">予約履歴一覧（グループレッスン）</a></li>
+    <li><a href="#mypage">プロフィール編集</a></li>
+    <li><a href="#mypage">グループメンバー編集</a></li>
+    <li><a href="#mypage">メールアドレス変更</a></li>
+    <li><a href="#mypage">パスワード変更</a></li>
+    <li><a href="#mypage">電話番号変更</a></li>
+    <li><a href="#mypage">クレジットカード登録</a></li>
+  </ul>
+  <p class="drawer__group">ヘルプ</p>
+  <ul class="drawer__list">
+    <li><a href="#help">はじめての方へ</a></li>
+    <li><a href="#help">ご利用料金について</a></li>
+    <li><a href="#help">ご利用のマナー・注意点</a></li>
+    <li><a href="#help">安全への取り組み</a></li>
+    <li><a href="#faq">よくあるご質問</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+    <li><a class="is-muted" href="#coach-recruit">コーチ登録をご希望の方</a></li>
+  </ul>
+</nav>
 
-  <!-- ============================================
-       ヒーロー（ファーストビュー）
-       ============================================ -->
-  <section class="hero">
-    <div class="container hero__inner">
-      <div class="hero__body">
-        <p class="hero__lead">＜ここに小見出しが入ります＞</p>
-        <h1 class="hero__title">
-          ここにキャッチコピーが<br>
-          入ります
-        </h1>
-        <p class="hero__text">
-          ここに補足の説明文が入ります。<br>
-          素材が届き次第、元サイトの文言に差し替えます。
+<main id="main">
+<div id="top"></div>
+
+<!-- ============================================================
+     ヒーロー
+     ============================================================ -->
+<section class="hero">
+  <div class="hero__media">
+    <img src="assets/images/hero-swim.svg" alt="水中を泳ぐ子ども" width="1200" height="900">
+  </div>
+  <div class="hero__inner container">
+    <p class="hero__badge">日テレ運営</p>
+    <h1 class="hero__title">
+      <span class="hero__line">スポーツの</span>
+      <span class="hero__line">個人指導なら</span>
+      <span class="hero__line">ドリームコーチング</span>
+    </h1>
+  </div>
+</section>
+
+<div class="container register-wrap">
+  <a class="register-btn" href="#register">
+    <span class="register-btn__mark"><em>カンタン</em><strong>1分</strong></span>
+    <span class="register-btn__text">まずは無料で会員登録</span>
+  </a>
+</div>
+
+<!-- ============================================================
+     人気の競技カテゴリー（アイコン一覧）
+     ============================================================ -->
+<section class="section section--tinted">
+  <div class="container">
+    <h2 class="section__title">人気の競技カテゴリー</h2>
+    <ul class="cat-grid">
+      <li><a href="#categories"><span class="cat-grid__icon"><svg viewBox="0 0 48 48"><use href="#i-swim"/></svg></span>水泳</a></li>
+      <li><a href="#categories"><span class="cat-grid__icon"><svg viewBox="0 0 48 48"><use href="#i-run"/></svg></span>かけっこ</a></li>
+      <li><a href="#categories"><span class="cat-grid__icon"><svg viewBox="0 0 48 48"><use href="#i-baseball"/></svg></span>野球</a></li>
+      <li><a href="#categories"><span class="cat-grid__icon"><svg viewBox="0 0 48 48"><use href="#i-soccer"/></svg></span>サッカー</a></li>
+      <li><a href="#categories"><span class="cat-grid__icon"><svg viewBox="0 0 48 48"><use href="#i-athletics"/></svg></span>陸上</a></li>
+      <li><a href="#categories"><span class="cat-grid__icon"><svg viewBox="0 0 48 48"><use href="#i-pe"/></svg></span>学校体育</a></li>
+      <li><a href="#categories"><span class="cat-grid__icon"><svg viewBox="0 0 48 48"><use href="#i-dance"/></svg></span>ダンス</a></li>
+      <li><a href="#categories"><span class="cat-grid__icon"><svg viewBox="0 0 48 48"><use href="#i-volleyball"/></svg></span>バレーボール</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     ドリームコーチングとは？
+     ============================================================ -->
+<section class="section" id="about">
+  <div class="container container--narrow">
+    <h2 class="section__title section__title--marker">ドリームコーチングとは？</h2>
+    <p class="lead">
+      ドリームコーチングは<b>トップアスリート</b>によるトレーニングが受けられるサービスです。
+    </p>
+    <p class="lead">
+      苦手を克服、もっとスキルをあげたい、どんな課題や悩みでも、優秀なコーチが親切＆丁寧に寄り添います。
+    </p>
+    <a class="btn btn--outline btn--block" href="#help">
+      <svg class="btn__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-guide"/></svg>
+      ご利用ガイドはこちら
+    </a>
+
+    <div class="panel">
+      <p class="panel__head">トレーニングの種類</p>
+      <div class="panel__body">
+        <article class="ttype">
+          <h3 class="ttype__title">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-people"/></svg>個人指導
+          </h3>
+          <p class="ttype__text">
+            元日本代表やプロ選手が目標にあわせて、あなたの好きな場所＆好きな時間に、あなただけのトレーニングを提供します。
+          </p>
+          <a class="btn btn--outline btn--block" href="#help">個人指導のご利用の流れ</a>
+        </article>
+        <article class="ttype">
+          <h3 class="ttype__title">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg>グループレッスン
+          </h3>
+          <p class="ttype__text">
+            はじめての方でも参加しやすい少人数制のレッスンです。仲間と一緒に、トップアスリートのコーチングを受けられます。
+          </p>
+          <a class="btn btn--outline btn--block" href="#help">グループレッスンのご利用の流れ</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="panel panel--tinted">
+      <div class="panel__body">
+        <article class="ttype">
+          <h3 class="ttype__title">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-event"/></svg>イベント
+          </h3>
+          <p class="ttype__text">
+            主に日本テレビが主催する単発のスポーツイベントです。著名なアスリートと触れあえる貴重な体験を提供しています。
+          </p>
+          <a class="btn btn--outline btn--block btn--onwhite" href="#help">イベントのご利用の流れ</a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container register-wrap">
+  <a class="register-btn" href="#register">
+    <span class="register-btn__mark"><em>カンタン</em><strong>1分</strong></span>
+    <span class="register-btn__text">まずは無料で会員登録</span>
+  </a>
+</div>
+
+<!-- ============================================================
+     人気のご利用シーン
+     ============================================================ -->
+<section class="section section--tinted" id="scenes">
+  <div class="container container--narrow">
+    <h2 class="section__title">人気のご利用シーン</h2>
+    <article class="scene">
+      <img class="scene__img" src="assets/images/scene-race.svg"
+           alt="運動会でゴールテープを切る子ども" width="1200" height="800">
+      <div class="scene__body">
+        <h3 class="scene__title">かけっこで一番に！</h3>
+        <p class="scene__text">
+          お子さまの走り方を個人指導で徹底トレーニング！ドリームコーチングのコーチが正しいフォームと効率的な走り方を指導し、運動会での活躍をサポートします。
         </p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#contact">メインのボタン</a>
-          <a class="btn btn--ghost" href="#section-1">サブのボタン</a>
+        <a class="btn btn--outline btn--block" href="#coaches">かけっこのコーチを探す</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     パックプランのバナー
+     ============================================================ -->
+<section class="section section--flush">
+  <div class="container container--narrow">
+    <a class="banner" href="#packplan">
+      <img src="assets/images/banner-pack.svg"
+           alt="最大15%OFF まとめて購入 お得なパックプランがスタート 継続的なトレーニングで、もっと上達"
+           width="1200" height="500">
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================
+     開催予定のグループレッスン / イベント
+     ============================================================ -->
+<section class="section" id="lessons">
+  <div class="container container--narrow">
+    <h2 class="section__title">開催予定のグループレッスン / イベント</h2>
+
+    <div class="tabs" role="tablist" aria-label="開催月でしぼり込む">
+      <button class="tab is-active" type="button" role="tab" aria-selected="true"  data-filter="all">すべて</button>
+      <button class="tab"           type="button" role="tab" aria-selected="false" data-filter="9">9月</button>
+      <button class="tab"           type="button" role="tab" aria-selected="false" data-filter="10">10月</button>
+      <button class="tab"           type="button" role="tab" aria-selected="false" data-filter="11">11月以降</button>
+    </div>
+
+    <p class="tabs__empty" id="tabsEmpty" hidden>該当する開催予定はありません。</p>
+
+    <ul class="lesson-list" id="lessonList">
+      <li class="lesson" data-month="9">
+        <p class="lesson__tags">
+          <span class="tag">グループレッスン</span>
+          <span class="tag">東京</span>
+          <span class="tag">募集中</span>
+        </p>
+        <h3 class="lesson__title"><a href="#lessons">【運動会直前対策】キレイなフォームを身につけよう！</a></h3>
+        <p class="lesson__date">9月27日(日) 9:30 〜 10:30</p>
+        <p class="lesson__price">
+          60分 / <s>6,500円</s> <strong>6,000円</strong>
+        </p>
+        <p class="lesson__early">
+          <span class="tag tag--red">早割</span>
+          <span class="lesson__early-text">2026年9月20日(日)まで 500円オフ</span>
+        </p>
+        <dl class="spec">
+          <dt>対象</dt><dd>小学生・キッズ,中学生</dd>
+          <dt>募集日時</dt><dd>2026年8月30日(日)<br>〜 2026年9月25日(金) 9:30まで</dd>
+          <dt>開催決定日</dt><dd>2026年9月20日(日)9:30</dd>
+          <dt>開催場所</dt><dd>代々木・原宿周辺<br>東京都渋谷区代々木</dd>
+        </dl>
+        <div class="coach-row">
+          <span class="avatar avatar--a"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+          <div class="coach-row__body">
+            <p class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(339)</span></p>
+            <p class="coach-row__role">かけっこ・日本陸連公認コーチ｜現役実業団選手｜教員免許</p>
+            <p class="coach-row__name">小林 コーチ</p>
+          </div>
         </div>
-      </div>
-      <div class="hero__visual">
-        <!-- TODO: ヒーロー画像に差し替え -->
-        <div class="placeholder placeholder--hero">画像が入ります</div>
-      </div>
-    </div>
-  </section>
+      </li>
 
-  <!-- ============================================
-       セクション1〜4（構成は素材確認後に確定）
-       ============================================ -->
-  <section class="section" id="section-1">
-    <div class="container">
-      <h2 class="section__title">セクション見出し 1</h2>
-      <p class="section__desc">ここにセクションの説明文が入ります。</p>
-      <div class="cards">
-        <article class="card">
-          <div class="placeholder placeholder--card">画像</div>
-          <h3 class="card__title">項目タイトル</h3>
-          <p class="card__text">項目の説明文が入ります。</p>
-        </article>
-        <article class="card">
-          <div class="placeholder placeholder--card">画像</div>
-          <h3 class="card__title">項目タイトル</h3>
-          <p class="card__text">項目の説明文が入ります。</p>
-        </article>
-        <article class="card">
-          <div class="placeholder placeholder--card">画像</div>
-          <h3 class="card__title">項目タイトル</h3>
-          <p class="card__text">項目の説明文が入ります。</p>
-        </article>
-      </div>
-    </div>
-  </section>
+      <li class="lesson" data-month="10">
+        <p class="lesson__tags">
+          <span class="tag">グループレッスン</span>
+          <span class="tag">東京</span>
+          <span class="tag">募集中</span>
+        </p>
+        <h3 class="lesson__title"><a href="#lessons">【大人限定】うまくなりたい人全員集合！</a></h3>
+        <p class="lesson__date">10月6日(火) 19:00 〜 21:00</p>
+        <p class="lesson__price">120分 / 9,000円</p>
+        <dl class="spec">
+          <dt>対象</dt><dd>大学生,社会人・大人,シニア</dd>
+          <dt>募集日時</dt><dd>2026年8月17日(月)<br>〜 2026年10月4日(日) 21:00まで</dd>
+          <dt>開催決定日</dt><dd>2026年10月4日(日)12:00</dd>
+          <dt>開催場所</dt><dd>ゆうぽうと世田谷レクセンター<br>東京都世田谷区鎌田2-17-1</dd>
+        </dl>
+        <div class="coach-row">
+          <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+          <div class="coach-row__body">
+            <p class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(195)</span></p>
+            <p class="coach-row__role">元バレーボール、ビーチバレーボール選手</p>
+            <p class="coach-row__name">大山未希 コーチ</p>
+          </div>
+        </div>
+      </li>
+    </ul>
 
-  <section class="section section--tinted" id="section-2">
-    <div class="container">
-      <h2 class="section__title">セクション見出し 2</h2>
-      <p class="section__desc">ここにセクションの説明文が入ります。</p>
-      <div class="placeholder placeholder--block">コンテンツが入ります</div>
-    </div>
-  </section>
+    <a class="btn btn--outline btn--block" href="#lessons">新着グループレッスン / イベント一覧</a>
+  </div>
+</section>
 
-  <section class="section" id="section-3">
-    <div class="container">
-      <h2 class="section__title">セクション見出し 3</h2>
-      <p class="section__desc">ここにセクションの説明文が入ります。</p>
-      <div class="placeholder placeholder--block">コンテンツが入ります</div>
+<!-- ============================================================
+     コーチ選び相談バナー
+     ============================================================ -->
+<section class="section section--flush" id="contact">
+  <div class="container container--narrow">
+    <div class="consult">
+      <img class="consult__img" src="assets/images/banner-chat.svg"
+           alt="コーチ選びに困ったら…ドリームコーチング事務局があなたのコーチ選びをお手伝い。お気軽にチャットでご相談ください！"
+           width="1200" height="420">
+      <button class="consult__btn" type="button" data-open-chat>チャットで相談する <span aria-hidden="true">▶</span></button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section section--tinted" id="section-4">
-    <div class="container">
-      <h2 class="section__title">セクション見出し 4</h2>
-      <p class="section__desc">ここにセクションの説明文が入ります。</p>
-      <div class="placeholder placeholder--block">コンテンツが入ります</div>
+<!-- ============================================================
+     よくある質問
+     ============================================================ -->
+<section class="section" id="faq">
+  <div class="container container--narrow">
+    <h2 class="section__title">よくある質問</h2>
+    <div class="faq">
+      <details class="faq__item">
+        <summary><span class="faq__q">Q</span><span class="faq__label">予約方法について</span></summary>
+        <div class="faq__a">
+          <p>コーチのページから希望の日時を選び、予約リクエストを送信してください。コーチが承認すると予約が確定します。</p>
+        </div>
+      </details>
+      <details class="faq__item">
+        <summary><span class="faq__q">Q</span><span class="faq__label">予約は何日先まで可能ですか？</span></summary>
+        <div class="faq__a">
+          <p>コーチが公開している日程の範囲でご予約いただけます。詳しくは各コーチのページをご確認ください。</p>
+        </div>
+      </details>
+      <details class="faq__item">
+        <summary><span class="faq__q">Q</span><span class="faq__label">お支払い方法について</span></summary>
+        <div class="faq__a">
+          <p>クレジットカードでのお支払いに対応しています。お支払いはトレーニング実施後に確定します。</p>
+        </div>
+      </details>
+      <details class="faq__item">
+        <summary><span class="faq__q">Q</span><span class="faq__label">会員登録は無料ですか？</span></summary>
+        <div class="faq__a">
+          <p>会員登録および月額の費用は無料です。ご利用いただいたトレーニングの料金のみお支払いいただきます。</p>
+        </div>
+      </details>
+      <details class="faq__item">
+        <summary><span class="faq__q">Q</span><span class="faq__label">ログインができない</span></summary>
+        <div class="faq__a">
+          <p>ご登録のメールアドレスとパスワードをご確認ください。パスワードをお忘れの場合は再設定が可能です。</p>
+        </div>
+      </details>
     </div>
-  </section>
+    <a class="btn btn--outline btn--block" href="#faq">よくある質問の一覧へ</a>
+  </div>
+</section>
 
-  <!-- ============================================
-       お問い合わせ導線
-       ============================================ -->
-  <section class="cta" id="contact">
-    <div class="container cta__inner">
-      <h2 class="cta__title">ここに最後の一押しの見出し</h2>
-      <p class="cta__text">ここに補足文が入ります。</p>
-      <a class="btn btn--primary btn--lg" href="#">メインのボタン</a>
-    </div>
-  </section>
+<!-- ============================================================
+     新着コーチ
+     ============================================================ -->
+<section class="section section--tinted" id="coaches">
+  <div class="container container--narrow">
+    <h2 class="section__title">新着コーチ</h2>
+    <ul class="coach-list">
+      <li class="coach-card">
+        <div class="coach-row">
+          <span class="avatar avatar--a"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+          <div class="coach-row__body">
+            <p class="coach-row__role">元箱根駅伝ランナー、全国大会出場者</p>
+            <p class="coach-row__name">斎藤舜太 コーチ</p>
+          </div>
+        </div>
+        <p class="coach-card__note">【期間限定】新規参加コーチ限定の2,000円クーポン利用出来ます！</p>
+      </li>
+      <li class="coach-card">
+        <div class="coach-row">
+          <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+          <div class="coach-row__body">
+            <p class="coach-row__role">コーチ歴(日豪合わせて) 20年以上　現役ライフセーバー</p>
+            <p class="coach-row__name">浦口洸 コーチ</p>
+          </div>
+        </div>
+        <p class="coach-card__note">【期間限定】新規参加コーチ限定の2,000円クーポン利用出来ます！</p>
+      </li>
+      <li class="coach-card">
+        <div class="coach-row">
+          <span class="avatar avatar--c"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+          <div class="coach-row__body">
+            <p class="coach-row__role">プロバスケットボール選手</p>
+            <p class="coach-row__name">森黄州 コーチ</p>
+          </div>
+        </div>
+        <p class="coach-card__note">【期間限定】新規参加コーチ限定の2,000円クーポン利用出来ます！</p>
+      </li>
+      <li class="coach-card">
+        <div class="coach-row">
+          <span class="avatar avatar--d"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+          <div class="coach-row__body">
+            <p class="coach-row__role">海外経験を得た元富士通実業団アメフト選手</p>
+            <p class="coach-row__name">宮澤稜 コーチ</p>
+          </div>
+        </div>
+        <p class="coach-card__note">【期間限定】新規参加コーチ限定の2,000円クーポン利用出来ます！</p>
+      </li>
+      <li class="coach-card">
+        <div class="coach-row">
+          <span class="avatar avatar--e"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+          <div class="coach-row__body">
+            <p class="coach-row__role"><span class="flag" aria-hidden="true">🇯🇵</span>トライアスロンアマチュア大会日本チャンピオン</p>
+            <p class="coach-row__name">加来奈津子 コーチ</p>
+          </div>
+        </div>
+        <p class="coach-card__note">【期間限定】新規参加コーチ限定の2,000円クーポン利用出来ます！</p>
+      </li>
+      <li class="coach-card">
+        <div class="coach-row">
+          <span class="avatar avatar--f"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+          <div class="coach-row__body">
+            <p class="coach-row__role">全日本選手権出場コーチ</p>
+            <p class="coach-row__name">高橋洋昌 コーチ</p>
+          </div>
+        </div>
+        <p class="coach-card__note">【期間限定】新規参加コーチ限定の2,000円クーポン利用出来ます！</p>
+      </li>
+    </ul>
+    <a class="btn btn--outline btn--block" href="#coaches">新着コーチ一覧</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     新着の口コミ
+     ============================================================ -->
+<section class="section" id="reviews">
+  <div class="container container--narrow">
+    <h2 class="section__title">新着の口コミ</h2>
+    <ul class="review-list">
+      <li class="review">
+        <span class="avatar avatar--green"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+        <div class="review__body">
+          <a class="review__course" href="#reviews">【2回目以降】パーソナルトレーニング 60分 （藤田実桜コーチ）</a>
+          <p class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b></p>
+          <p class="review__meta"><b>shri-Hiro</b> さん <time datetime="2026-09-12">2026年09月12日</time></p>
+          <p class="review__text">
+            今回もレッスン誠にありがとうございました。<br>
+            リフティングやドリブル、攻めや守りの姿勢、家でも継続して出来そうな練習を知ることができて、とても勉強になりました。<br>
+            先生とのレッスンを息子もとても楽しみにしているので、自主練をしっかりして、またぜひお願いできればと思っています。
+          </p>
+        </div>
+      </li>
+      <li class="review">
+        <span class="avatar avatar--purple"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+        <div class="review__body">
+          <a class="review__course" href="#reviews">【守備に特化】60分コース！ （數田彩乃コーチ）</a>
+          <p class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b></p>
+          <p class="review__meta"><b>ヤマユウ</b> さん <time datetime="2026-09-12">2026年09月12日</time></p>
+          <p class="review__text">
+            投球指導をお願いしました。動きも体も硬く昔から投げ方に悩んでいましたが、様々なドリルを通じて今までに無い感覚でのスローイングができるようになりました。凄く丁寧かつフレンドリーな方だったので、緊張感もなくレッスンを受けることができました。定期的にレッスンを受けたいと思える、とても丁寧で優しい誠実なお人柄も素敵です！
+          </p>
+        </div>
+      </li>
+    </ul>
+    <a class="btn btn--outline btn--block" href="#reviews">口コミ一覧</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     人気の競技カテゴリー（詳細）
+     ============================================================ -->
+<section class="section section--tinted" id="categories">
+  <div class="container container--narrow">
+    <h2 class="section__title">人気の競技カテゴリー</h2>
+    <ul class="cat-list">
+      <li><a class="cat" href="#categories">
+        <h3 class="cat__title"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-swim"/></svg>水泳</h3>
+        <p class="cat__text">水泳は1対1の指導で一気に上達します。キッズから大人まで、元日本代表などトップアスリートが個人指導。毎月1回など定期的な利用がオススメです。</p>
+        <span class="cat__arrow" aria-hidden="true"></span>
+      </a></li>
+      <li><a class="cat" href="#categories">
+        <h3 class="cat__title"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-run"/></svg>かけっこ</h3>
+        <p class="cat__text">走る事が苦手なお子様から、かけっこで1番になりたい！リレーの選手に選ばれたい！というお子様まで。アスリートが走り方の基本から指導します。</p>
+        <span class="cat__arrow" aria-hidden="true"></span>
+      </a></li>
+      <li><a class="cat" href="#categories">
+        <h3 class="cat__title"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-baseball"/></svg>野球</h3>
+        <p class="cat__text">元プロ野球選手が多数コーチ参加。少年野球やリトルリーグから、草野球を楽しむ大人まで、年齢・経験を問わずに利用できます。</p>
+        <span class="cat__arrow" aria-hidden="true"></span>
+      </a></li>
+      <li><a class="cat" href="#categories">
+        <h3 class="cat__title"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-soccer"/></svg>サッカー</h3>
+        <p class="cat__text">元Ｊリーガーに教わるマンツーマン指導！一人一人の長所や課題を見極めて、ドリブル・シュート・パスなどの基本をしっかり教えます。</p>
+        <span class="cat__arrow" aria-hidden="true"></span>
+      </a></li>
+      <li><a class="cat" href="#categories">
+        <h3 class="cat__title"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-athletics"/></svg>陸上</h3>
+        <p class="cat__text">元五輪代表や駅伝コーチ、現役選手など豪華コーチ陣が揃った陸上の個人指導。マラソン・ランニングで大人の利用が増えています。</p>
+        <span class="cat__arrow" aria-hidden="true"></span>
+      </a></li>
+      <li><a class="cat" href="#categories">
+        <h3 class="cat__title"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-pe"/></svg>学校体育</h3>
+        <p class="cat__text">縄跳びの二重飛びや鉄棒の逆上がりなど、学校体育の苦手克服には個人指導が最適。元五輪代表や世界体操メダリストもコーチとして参加しています。</p>
+        <span class="cat__arrow" aria-hidden="true"></span>
+      </a></li>
+      <!-- ※この1件はスクリーンショットで競技名が見切れていた箇所です（説明文のみ判読可）。
+           正しい競技名が分かり次第、差し替えてください。 -->
+      <li><a class="cat" href="#categories">
+        <h3 class="cat__title"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-dance"/></svg>ダンス</h3>
+        <p class="cat__text">現役ダンサーや振付師など多彩なコーチが参加。対面でのレッスンだけでなく、オンラインでの受講も人気で、全国の方に利用されています。</p>
+        <span class="cat__arrow" aria-hidden="true"></span>
+      </a></li>
+      <li><a class="cat" href="#categories">
+        <h3 class="cat__title"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-volleyball"/></svg>バレーボール</h3>
+        <p class="cat__text">元Ｖリーグ監督やコーチ、選手が多数参加。小・中学生の個人指導からママさんバレーまで、チーム・団体向けの指導も可能です。</p>
+        <span class="cat__arrow" aria-hidden="true"></span>
+      </a></li>
+    </ul>
+    <a class="btn btn--outline btn--block" href="#categories">すべてのカテゴリーを見る</a>
+  </div>
+</section>
 
 </main>
 
-<!-- ============================================
+<!-- ============================================================
+     ページの先頭に戻る
+     ============================================================ -->
+<a class="pagetop" href="#top"><span aria-hidden="true">↑</span> ページの先頭に戻る</a>
+
+<!-- ============================================================
      フッター
-     ============================================ -->
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <span class="footer__logo-text">LOGO</span>
-      <p class="footer__note">ここに一言説明が入ります。</p>
-    </div>
-    <nav class="footer__nav" aria-label="フッターメニュー">
-      <ul class="footer__list">
-        <li><a href="#">リンク1</a></li>
-        <li><a href="#">リンク2</a></li>
-        <li><a href="#">リンク3</a></li>
-        <li><a href="#">リンク4</a></li>
-      </ul>
-    </nav>
+     ============================================================ -->
+<footer class="footer" id="register">
+  <div class="container container--narrow">
+    <a class="btn btn--orange btn--block btn--lg" href="#register">新規登録</a>
+    <p class="footer__login"><a class="link" href="#login">ログインはこちら</a></p>
   </div>
-  <p class="footer__copyright">&copy; <span id="year">2026</span> Sport Matching</p>
+
+  <div class="footer__menu">
+    <details class="fmenu">
+      <summary>ドリームコーチングについて</summary>
+      <ul>
+        <li><a href="#about">はじめての方へ</a></li>
+        <li><a href="#help">ご利用料金について</a></li>
+        <li><a href="#help">ご利用のマナー・注意点</a></li>
+        <li><a href="#help">安全への取り組み</a></li>
+        <li><a href="#faq">よくあるご質問</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </details>
+    <details class="fmenu">
+      <summary>運営メディア・SNS</summary>
+      <ul>
+        <li><a href="#media">お役立ちコラム</a></li>
+        <li><a href="#media">公式X（旧Twitter）</a></li>
+        <li><a href="#media">公式Facebook</a></li>
+        <li><a href="#media">公式Instagram</a></li>
+      </ul>
+    </details>
+    <details class="fmenu">
+      <summary>会社情報</summary>
+      <ul>
+        <li><a href="#company">運営会社</a></li>
+        <li><a href="#company">利用規約</a></li>
+        <li><a href="#company">プライバシーポリシー</a></li>
+        <li><a href="#company">特定商取引法に基づく表記</a></li>
+        <li><a href="#coach-recruit">コーチ登録をご希望の方</a></li>
+      </ul>
+    </details>
+  </div>
+
+  <p class="footer__copyright">&copy; <span id="year">2026</span> Dream Coaching</p>
 </footer>
+
+<!-- ============================================================
+     チャットウィジェット（画面右下に固定）
+     ============================================================ -->
+<div class="chat" id="chat">
+  <button class="chat__close" id="chatClose" type="button" aria-label="チャットの案内を閉じる">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  </button>
+  <button class="chat__bubble" type="button" data-open-chat>
+    チャット受付中です！<br>お気軽にお問合せください
+  </button>
+  <span class="chat__avatar" aria-hidden="true">
+    <svg viewBox="0 0 48 48"><use href="#i-person"/></svg>
+  </span>
+</div>
+
+<p class="hours">9:00から営業</p>
 
 <script src="assets/js/main.js"></script>
 </body>

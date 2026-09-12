@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="運動会でゴールテープを切る子どものイラスト">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BFE8FA"/><stop offset="1" stop-color="#E9F7FE"/>
+    </linearGradient>
+    <clipPath id="f2"><rect width="1200" height="800"/></clipPath>
+  </defs>
+  <g clip-path="url(#f2)">
+    <rect width="1200" height="800" fill="url(#sky)"/>
+
+    <!-- グラウンド -->
+    <rect y="470" width="1200" height="330" fill="#D7A56B"/>
+    <rect y="470" width="1200" height="26" fill="#C6924F"/>
+    <g stroke="#FFFFFF" stroke-width="7" opacity=".7">
+      <path d="M0 560 H1200"/><path d="M0 660 H1200"/><path d="M0 770 H1200"/>
+    </g>
+
+    <!-- 応援している人（ぼかしの代わりに淡い色で表現） -->
+    <g opacity=".45">
+      <g fill="#5B7FC7">
+        <circle cx="120" cy="404" r="30"/><rect x="90" y="440" width="60" height="70" rx="20"/>
+        <circle cx="250" cy="392" r="28"/><rect x="222" y="426" width="56" height="82" rx="20"/>
+        <circle cx="980" cy="398" r="29"/><rect x="951" y="434" width="58" height="76" rx="20"/>
+        <circle cx="1104" cy="388" r="27"/><rect x="1077" y="422" width="54" height="86" rx="20"/>
+      </g>
+      <g fill="#8FB0E6">
+        <circle cx="60" cy="420" r="26"/><rect x="35" y="450" width="52" height="60" rx="18"/>
+        <circle cx="330" cy="412" r="25"/><rect x="306" y="440" width="50" height="66" rx="18"/>
+        <circle cx="880" cy="414" r="26"/><rect x="855" y="444" width="52" height="64" rx="18"/>
+      </g>
+    </g>
+
+    <!-- ゴールテープ -->
+    <path d="M0 486 C 300 520, 900 520, 1200 486" stroke="#FFFFFF" stroke-width="20" fill="none"/>
+
+    <!-- 走っている子ども -->
+    <g transform="translate(470 176)">
+      <!-- 後ろ足 -->
+      <path d="M132 402 C 100 452, 62 486, 26 500" stroke="#F6D7BE" stroke-width="40" stroke-linecap="round" fill="none"/>
+      <!-- 前足 -->
+      <path d="M182 402 C 200 456, 214 492, 236 516" stroke="#F6D7BE" stroke-width="40" stroke-linecap="round" fill="none"/>
+      <!-- ハーフパンツ -->
+      <path d="M104 322 h116 v76 c0 12 -14 18 -30 18 h-56 c-16 0 -30 -6 -30 -18 Z" fill="#2C6FD1"/>
+      <!-- Tシャツ -->
+      <path d="M96 190 c22 -18 46 -26 66 -26 s44 8 66 26 l-6 142 h-120 Z" fill="#FFFFFF"/>
+      <path d="M150 206 h26 v42 h-26 Z" fill="#DCE6EE"/>
+      <!-- 腕（バンザイ） -->
+      <path d="M104 210 C 56 168, 24 124, 4 84"    stroke="#F6D7BE" stroke-width="38" stroke-linecap="round" fill="none"/>
+      <path d="M224 210 C 272 168, 302 124, 320 82" stroke="#F6D7BE" stroke-width="38" stroke-linecap="round" fill="none"/>
+      <!-- 頭 -->
+      <circle cx="163" cy="112" r="66" fill="#F6D7BE"/>
+      <path d="M100 96 C 106 40, 220 40, 226 96 C 206 70, 122 70, 100 96 Z" fill="#332C28"/>
+      <!-- ハチマキ -->
+      <path d="M97 106 h132" stroke="#2C6FD1" stroke-width="18"/>
+      <path d="M229 108 l40 -14 -8 26 34 4 -50 18 Z" fill="#2C6FD1"/>
+      <!-- 表情 -->
+      <path d="M134 122 q10 -12 22 0"  stroke="#332C28" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M172 122 q10 -12 22 0"  stroke="#332C28" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M140 148 q24 26 48 0"   stroke="#C2694F" stroke-width="8" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- 手前のテープ（切れた側） -->
+    <path d="M0 500 C 260 528, 420 546, 470 560" stroke="#FFFFFF" stroke-width="18" fill="none" stroke-linecap="round"/>
+    <path d="M1200 500 C 940 528, 790 546, 742 560" stroke="#FFFFFF" stroke-width="18" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

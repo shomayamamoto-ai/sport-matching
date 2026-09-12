@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="水中を泳ぐ子どものイラスト">
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#7FDCF5"/>
+      <stop offset=".55" stop-color="#2FB3DE"/>
+      <stop offset="1"   stop-color="#1487B5"/>
+    </linearGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="frame"><rect width="1200" height="900"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="900" fill="url(#water)"/>
+
+    <!-- 水中の光の筋 -->
+    <g fill="url(#ray)">
+      <polygon points="180,0 300,0 210,900 60,900"/>
+      <polygon points="520,0 600,0 540,900 430,900"/>
+      <polygon points="860,0 980,0 950,900 800,900"/>
+    </g>
+
+    <!-- 水面の波 -->
+    <path d="M0 120 C 160 60, 320 180, 500 130 S 840 60, 1200 140 L1200 0 L0 0 Z" fill="#BFEEFB" opacity=".85"/>
+    <path d="M0 165 C 180 105, 340 215, 520 170 S 860 105, 1200 180 L1200 100 C 900 40, 700 150, 480 105 S 150 60, 0 100 Z" fill="#FFFFFF" opacity=".35"/>
+
+    <!-- 泡 -->
+    <g fill="#FFFFFF" opacity=".5">
+      <circle cx="215" cy="300" r="13"/><circle cx="255" cy="255" r="8"/>
+      <circle cx="180" cy="360" r="7"/><circle cx="960" cy="330" r="16"/>
+      <circle cx="1010" cy="272" r="9"/><circle cx="905" cy="240" r="6"/>
+      <circle cx="760" cy="690" r="11"/><circle cx="330" cy="700" r="9"/>
+      <circle cx="1080" cy="600" r="7"/><circle cx="120" cy="560" r="10"/>
+    </g>
+
+    <!-- 泳いでいる子ども -->
+    <g transform="translate(700 150) rotate(-9) scale(.85)">
+      <!-- 体 -->
+      <path d="M120 150 C 260 96, 470 96, 610 140 C 660 156, 668 214, 612 228 C 462 268, 262 268, 122 220 C 74 203, 74 168, 120 150 Z" fill="#F6D7BE"/>
+      <!-- 水着 -->
+      <path d="M330 118 C 430 108, 520 116, 606 140 C 658 157, 666 213, 610 228 C 520 252, 424 260, 336 258 Z" fill="#1668B8"/>
+      <path d="M356 116 l16 145 M404 114 l14 148" stroke="#0F4E8C" stroke-width="9" fill="none" opacity=".55"/>
+      <!-- 腕 -->
+      <path d="M180 168 C 96 118, 24 104, -34 128" stroke="#F6D7BE" stroke-width="46" stroke-linecap="round" fill="none"/>
+      <path d="M470 210 C 470 300, 400 356, 300 366" stroke="#F6D7BE" stroke-width="44" stroke-linecap="round" fill="none"/>
+      <!-- 脚 -->
+      <path d="M598 176 C 700 156, 790 186, 860 152" stroke="#F6D7BE" stroke-width="48" stroke-linecap="round" fill="none"/>
+      <path d="M598 214 C 706 236, 792 268, 872 250" stroke="#F6D7BE" stroke-width="44" stroke-linecap="round" fill="none"/>
+      <!-- 頭 -->
+      <circle cx="120" cy="176" r="86" fill="#F6D7BE"/>
+      <!-- 水泳帽 -->
+      <path d="M40 148 A 86 86 0 0 1 200 132 C 210 154, 206 174, 196 186 C 140 156, 78 154, 40 176 Z" fill="#1B7FD1"/>
+      <path d="M36 176 C 74 152, 142 152, 198 186" stroke="#0F5FA6" stroke-width="9" fill="none"/>
+      <!-- ゴーグル -->
+      <g>
+        <path d="M52 194 h116" stroke="#0F5FA6" stroke-width="11"/>
+        <circle cx="78"  cy="196" r="26" fill="#8FE4FA" stroke="#0F5FA6" stroke-width="9"/>
+        <circle cx="146" cy="196" r="26" fill="#8FE4FA" stroke="#0F5FA6" stroke-width="9"/>
+      </g>
+      <!-- 口 -->
+      <path d="M96 240 q 22 16 44 0" stroke="#C98F6A" stroke-width="8" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- 装飾 -->
+    <polygon points="1112,84 1188,124 1112,164" fill="#FFDE2E"/>
+    <polygon points="1030,742 1116,742 1073,818" fill="#FFDE2E"/>
+    <path d="M1096 214 a 54 54 0 0 1 -6 96" stroke="#F79A22" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M120 742 a 56 56 0 0 0 74 40"  stroke="#2196D6" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <circle cx="852" cy="96" r="52" fill="#7FD8F2" opacity=".85"/>
+    <g stroke="#FFFFFF" stroke-width="10" opacity=".28">
+      <path d="M-40 640 L 220 380"/><path d="M20 700 L 280 440"/><path d="M80 760 L 340 500"/>
+    </g>
+  </g>
+</svg>

@@ -2,460 +2,922 @@
 
 /* ============================================================
    0. デザイン変数
-   元サイトの配色が分かり次第、ここの値だけ差し替えれば
-   サイト全体の色が一括で変わります。
+   色は参考サイトのスクリーンショットから実測した値です。
+   ここを書き換えるとサイト全体の色が一括で変わります。
    ============================================================ */
 :root {
   /* 色 ------------------------------------------------------ */
-  --color-primary:      #1a5fd0;  /* TODO: メインカラー */
-  --color-primary-dark: #14489e;  /* TODO: メインカラー（濃いめ／ホバー用） */
-  --color-accent:       #ff6b2c;  /* TODO: アクセントカラー */
-  --color-text:         #1c1f26;  /* 本文の文字色 */
-  --color-text-muted:   #5b6472;  /* 補足の文字色 */
-  --color-bg:           #ffffff;  /* 背景色 */
-  --color-bg-tinted:    #f4f6fa;  /* 薄く色を敷いた背景 */
-  --color-border:       #e2e6ee;  /* 罫線 */
+  --c-cyan:        #2EC9F5;  /* メインの水色（見出し・リンク） */
+  --c-cyan-dark:   #17B4E2;  /* 水色のホバー */
+  --c-blue:        #00A4E8;  /* バッジ・強めの青 */
+  --c-blue-deep:   #0F6FC6;  /* バナーの濃い青 */
+  --c-orange:      #FEAD14;  /* CTAボタン */
+  --c-orange-dark: #F09A00;  /* CTAボタンのホバー */
+  --c-yellow:      #FFD600;  /* 装飾の黄色 */
+  --c-red:         #E4453B;  /* 早割・割引価格 */
+  --c-teal-deep:   #054456;  /* 営業時間バー */
 
-  /* 余白 ---------------------------------------------------- */
-  --space-section: clamp(56px, 8vw, 104px);  /* セクション間の余白 */
-  --space-gutter:  clamp(16px, 4vw, 32px);   /* 画面左右の余白 */
+  --c-text:        #181E22;  /* 本文 */
+  --c-text-sub:    #6B7780;  /* 補足・肩書 */
+  --c-bg:          #FFFFFF;
+  --c-bg-tint:     #DFF6FD;  /* 薄い水色の背景 */
+  --c-line:        #E3E8EC;  /* 罫線 */
+  --c-line-cyan:   #9FE3F7;  /* 水色の枠線 */
 
-  /* レイアウト ---------------------------------------------- */
-  --container-max: 1120px;   /* 中身の最大幅 */
-  --header-height: 64px;
-  --radius:        12px;
+  /* 余白・サイズ -------------------------------------------- */
+  --gutter:     16px;
+  --container:  1080px;
+  --narrow:     760px;
+  --radius:     10px;
+  --radius-lg:  14px;
+  --hours-h:    46px;   /* 画面下に固定する営業時間バーの高さ */
 
-  /* 文字 ---------------------------------------------------- */
-  --font-base: "Helvetica Neue", Arial,
-               "Hiragino Kaku Gothic ProN", "Hiragino Sans",
-               "BIZ UDPGothic", Meiryo, sans-serif;
+  --font: "Helvetica Neue", Arial,
+          "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+          "BIZ UDPGothic", Meiryo, sans-serif;
 }
 
 /* ============================================================
    1. リセット・土台
    ============================================================ */
-*,
-*::before,
-*::after { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
-  /* ヘッダーに隠れないよう、アンカー移動時に余白を確保 */
-  scroll-padding-top: var(--header-height);
+  scroll-padding-top: 96px;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: var(--font-base);
+  /* 画面下に固定バーがあるぶん、本文の下に余白を確保する */
+  padding-bottom: var(--hours-h);
+  font-family: var(--font);
   font-size: 16px;
-  line-height: 1.8;
-  color: var(--color-text);
-  background: var(--color-bg);
-  /* 横スクロール（レイアウト崩れ）を防ぐ */
-  overflow-x: hidden;
+  line-height: 1.75;
+  color: var(--c-text);
+  background: var(--c-bg);
+  /* clip を使う。hidden だと position:sticky（追従ヘッダー）が効かなくなる */
+  overflow-x: clip;
 }
 
-img,
-svg,
-video {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-
+img, svg, video { max-width: 100%; height: auto; vertical-align: middle; }
 a { color: inherit; text-decoration: none; }
-a:hover { text-decoration: underline; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p, dl, dd, figure { margin: 0; }
+button { font: inherit; color: inherit; }
 
-ul { margin: 0; padding: 0; list-style: none; }
-
-h1, h2, h3, p { margin: 0; }
-
-/* ------------------------------------------------------------
-   日本語が変な位置で改行されないようにする
-
-   - line-break: strict      … 「、」「。」が行頭に来るのを防ぐ
-   - word-break: auto-phrase … 文節（意味のかたまり）の切れ目で改行する
-                               ※対応ブラウザのみ。非対応でも崩れません
-   - text-wrap                … 行の長さのバランスを整える
-   - overflow-wrap: break-word … 長いURLなどが枠からはみ出すのを防ぐ
-   ------------------------------------------------------------ */
-h1, h2, h3, p, li, .btn {
-  line-break: strict;
-  word-break: auto-phrase;
-  overflow-wrap: break-word;
+/* --- 日本語の改行を自然な位置にする ------------------------ */
+h1, h2, h3, p, li, dd, summary, .btn {
+  line-break: strict;            /* 「、」「。」が行頭に来ないようにする */
+  word-break: auto-phrase;       /* 文節（意味のかたまり）で改行する */
+  overflow-wrap: break-word;     /* 長いURLなどのはみ出しを防ぐ */
 }
+h1, h2, h3 { text-wrap: balance; }
 
-/* 見出しは行の長さを揃えて、1文字だけ次の行に落ちるのを防ぐ */
-h1, h2, h3 {
-  text-wrap: balance;
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
 }
-
-/* 本文は最終行が極端に短くなるのを防ぐ */
-p {
-  text-wrap: pretty;
+.skip-link:focus {
+  left: 8px; top: 8px; z-index: 300;
+  padding: 8px 16px;
+  background: #fff;
+  border: 2px solid var(--c-blue);
+  border-radius: 6px;
 }
 
 /* ============================================================
-   2. 共通パーツ
+   2. レイアウト共通
    ============================================================ */
 .container {
   width: 100%;
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin-inline: auto;
-  /* 左右の余白は必ず確保し、文字が画面端に貼り付かないようにする */
-  padding-inline: var(--space-gutter);
+  padding-inline: var(--gutter);
 }
+.container--narrow { max-width: var(--narrow); }
 
-/* --- ボタン ------------------------------------------------ */
+.section { padding-block: 40px; }
+.section--tinted { background: var(--c-bg-tint); }
+.section--flush { padding-block: 24px; }
+
+.section__title {
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.45;
+  text-align: center;
+  letter-spacing: .01em;
+}
+/* 見出しの後ろに水色のマーカーを敷く */
+.section__title--marker > span,
+.section__title--marker {
+  display: inline;
+  background: linear-gradient(transparent 52%, #9FE7FA 52%, #9FE7FA 90%, transparent 90%);
+}
+.section__title--marker { display: block; }
+
+.section > .container > .section__title,
+.section > .container--narrow > .section__title { margin-bottom: 28px; }
+
+.lead { margin-top: 20px; font-size: 16px; }
+.lead:first-of-type { margin-top: 0; }
+.lead b { font-weight: 800; }
+
+.link { color: var(--c-blue); }
+.link:hover { text-decoration: underline; }
+
+/* ============================================================
+   3. ボタン
+   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   min-height: 48px;
-  padding: 12px 28px;
+  padding: 10px 22px;
   border: 2px solid transparent;
-  border-radius: 999px;
-  font-size: 15px;
+  border-radius: var(--radius);
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.5;
   text-align: center;
   cursor: pointer;
-  transition: background-color .2s, color .2s, border-color .2s;
+  transition: background-color .2s, color .2s, border-color .2s, opacity .2s;
 }
-.btn:hover { text-decoration: none; }
+.btn--block { display: flex; width: 100%; }
+.btn--lg { min-height: 60px; font-size: 18px; }
+.btn--pill { border-radius: 999px; }
 
-.btn--primary {
-  background: var(--color-primary);
-  color: #fff;
+.btn--orange {
+  background: var(--c-orange);
+  color: var(--c-text);
+  font-weight: 800;
 }
-.btn--primary:hover { background: var(--color-primary-dark); }
+.btn--orange:hover { background: var(--c-orange-dark); }
 
-.btn--ghost {
-  background: transparent;
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+.btn--outline {
+  background: #fff;
+  border-color: var(--c-line-cyan);
+  color: var(--c-cyan);
+  font-weight: 700;
 }
-.btn--ghost:hover {
-  background: var(--color-primary);
-  color: #fff;
-}
+.btn--outline:hover { background: #F2FBFE; border-color: var(--c-cyan); }
+.btn--onwhite { background: #fff; }
 
-.btn--sm { min-height: 40px; padding: 8px 20px; font-size: 14px; }
-.btn--lg { min-height: 56px; padding: 16px 40px; font-size: 17px; }
+.btn__icon { width: 22px; height: 22px; flex: none; }
 
-/* --- 画像が入る予定の枠（素材が届いたら削除） ------------- */
-.placeholder {
+.section .btn--block { margin-top: 24px; }
+
+/* --- 「まずは無料で会員登録」ボタン ------------------------- */
+.register-wrap { padding-block: 24px; }
+
+.register-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: repeating-linear-gradient(
-    -45deg,
-    #eef1f6 0 12px,
-    #e5e9f1 12px 24px
-  );
-  border: 1px dashed var(--color-border);
+  gap: 14px;
+  min-height: 76px;
+  padding: 12px 20px;
+  background: var(--c-orange);
   border-radius: var(--radius);
-  color: var(--color-text-muted);
-  font-size: 14px;
+  color: var(--c-text);
+  transition: background-color .2s;
+}
+.register-btn:hover { background: var(--c-orange-dark); }
+
+.register-btn__mark {
+  flex: none;
+  display: grid;
+  place-content: center;
+  width: 54px; height: 54px;
+  background: #fff;
+  border-radius: 50%;
+  line-height: 1.1;
   text-align: center;
 }
-.placeholder--hero  { aspect-ratio: 4 / 3; }
-.placeholder--card  { aspect-ratio: 16 / 10; margin-bottom: 16px; }
-.placeholder--block { min-height: 240px; margin-top: 32px; }
+.register-btn__mark em { display: block; font-size: 10px; font-style: normal; font-weight: 700; }
+.register-btn__mark strong { display: block; font-size: 19px; font-weight: 800; }
+
+.register-btn__text { font-size: 19px; font-weight: 800; }
 
 /* ============================================================
-   3. ヘッダー
+   4. ヘッダー
    ============================================================ */
 .header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, .96);
-  border-bottom: 1px solid var(--color-border);
-  backdrop-filter: blur(6px);
+  z-index: 90;
+  background: #fff;
 }
 
-.header__inner {
+.header__main { border-bottom: 1px solid var(--c-line); }
+
+.header__row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  min-height: var(--header-height);
+  gap: 12px;
+  min-height: 62px;
+  padding-block: 8px;
 }
 
-.header__logo-text {
-  font-size: 20px;
+.logo { display: block; min-width: 0; }
+.logo__tagline {
+  display: block;
+  font-size: 10px;
+  white-space: nowrap;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .01em;
+}
+.logo__body { display: flex; align-items: baseline; gap: 6px; }
+.logo__name {
+  font-size: 22px;
   font-weight: 800;
-  letter-spacing: .08em;
-  color: var(--color-primary);
+  letter-spacing: -.01em;
+  white-space: nowrap;
 }
-.header__logo:hover { text-decoration: none; }
+.logo__by { display: flex; align-items: center; gap: 4px; flex: none; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.logo__ntv {
+  display: inline-block;
+  padding: 1px 4px;
+  background: var(--c-text);
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: -.04em;
+}
 
-/* --- スマホ用メニューボタン -------------------------------- */
-.header__toggle {
-  display: none;   /* PCでは非表示。スマホ幅で表示に切り替え */
+.header__actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.header__signup { min-height: 38px; padding: 5px 14px; font-size: 14px; }
+
+.hamburger {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
+  gap: 6px;
+  width: 36px; height: 40px;
   padding: 0;
   background: none;
   border: 0;
   cursor: pointer;
 }
-.header__toggle-bar {
+.hamburger span {
   display: block;
-  width: 24px;
-  height: 2px;
+  width: 26px; height: 3px;
   margin-inline: auto;
-  background: var(--color-text);
-  transition: transform .25s, opacity .25s;
-}
-/* 開いているときは「×」の形にする */
-.header__toggle[aria-expanded="true"] .header__toggle-bar:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.header__toggle[aria-expanded="true"] .header__toggle-bar:nth-child(2) {
-  opacity: 0;
-}
-.header__toggle[aria-expanded="true"] .header__toggle-bar:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  background: var(--c-text);
+  border-radius: 2px;
 }
 
-/* --- ナビゲーション ---------------------------------------- */
-.nav__list {
-  display: flex;
-  align-items: center;
-  gap: clamp(12px, 2vw, 28px);
-}
-.nav__link {
+.header__welcome {
+  border-bottom: 1px solid var(--c-line);
   font-size: 15px;
-  font-weight: 700;
-  white-space: nowrap;
+  line-height: 1.5;
 }
-.nav__link:hover { color: var(--color-primary); text-decoration: none; }
+.header__welcome .container { padding-block: 10px; }
 
 /* ============================================================
-   4. ヒーロー
+   5. ドロワーメニュー
+   ============================================================ */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: rgba(0, 0, 0, .45);
+}
+
+.drawer {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 120;
+  width: min(87vw, 420px);
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+.drawer[hidden], .drawer-overlay[hidden] { display: none; }
+
+/* 開閉アニメーション */
+.drawer { transform: translateX(-100%); transition: transform .25s ease; }
+.drawer.is-open { transform: translateX(0); }
+.drawer-overlay { opacity: 0; transition: opacity .25s ease; }
+.drawer-overlay.is-open { opacity: 1; }
+
+.drawer__close {
+  position: absolute;
+  top: 10px; right: -52px;
+  width: 44px; height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+.drawer__close svg { width: 30px; height: 30px; fill: none; }
+
+.drawer__head { padding: 20px var(--gutter) 24px; text-align: center; }
+.drawer__welcome { font-size: 17px; margin-bottom: 16px; }
+.drawer__login { display: inline-block; margin-top: 16px; text-decoration: underline; }
+
+.drawer__group {
+  padding: 8px var(--gutter);
+  background: #F4F6F7;
+  color: var(--c-text-sub);
+  font-size: 14px;
+}
+
+.drawer__list li { border-bottom: 1px solid var(--c-line); }
+.drawer__list li:first-child { border-top: 1px solid var(--c-line); }
+.drawer__list a {
+  display: block;
+  padding: 14px var(--gutter);
+  font-size: 16px;
+}
+.drawer__list a:hover { background: #F7FBFD; }
+.drawer__list .is-muted { color: #9AA4AB; }
+
+/* ============================================================
+   6. ヒーロー
    ============================================================ */
 .hero {
-  padding-block: clamp(40px, 7vw, 88px);
-  background: linear-gradient(180deg, var(--color-bg-tinted), var(--color-bg));
+  position: relative;
+  overflow: hidden;
+  background: var(--c-bg-tint);
 }
+.hero__media { position: absolute; inset: 0; }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 58% 34%; }
 
 .hero__inner {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  align-items: center;
-  gap: clamp(28px, 5vw, 56px);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* 中の要素を横いっぱいに伸ばさない */
+  justify-content: center;
+  min-height: 300px;
+  padding-block: 26px 34px;
 }
 
-.hero__lead {
-  margin-bottom: 12px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  color: var(--color-primary);
-}
-
-.hero__title {
-  font-size: clamp(28px, 5.2vw, 48px);
+.hero__badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 5px 22px;
+  background: var(--c-cyan);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 20px;
   font-weight: 800;
-  line-height: 1.4;
+  letter-spacing: .02em;
+}
+
+.hero__title { display: grid; justify-items: start; gap: 8px; }
+.hero__line {
+  display: inline-block;
+  padding: 4px 14px;
+  background: #fff;
+  border-radius: 4px;
+  color: var(--c-cyan);
+  font-size: clamp(26px, 7.4vw, 34px);
+  font-weight: 800;
+  line-height: 1.35;
   letter-spacing: .01em;
 }
 
-.hero__text {
-  margin-top: 20px;
-  color: var(--color-text-muted);
+/* ============================================================
+   7. 人気の競技カテゴリー（アイコン一覧）
+   ============================================================ */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;   /* 画面が狭いときはボタンを折り返す */
-  gap: 12px;
-  margin-top: 32px;
+.cat-grid a {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 14px 2px;
+  background: #fff;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  transition: transform .15s, box-shadow .15s;
 }
+.cat-grid a:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+.cat-grid__icon { color: var(--c-blue); }
+.cat-grid__icon svg { display: block; width: 30px; height: 30px; fill: none; }
 
 /* ============================================================
-   5. セクション共通
+   8. トレーニングの種類（パネル）
    ============================================================ */
-.section { padding-block: var(--space-section); }
-.section--tinted { background: var(--color-bg-tinted); }
+.panel {
+  margin-top: 32px;
+  border: 2px solid var(--c-cyan);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #fff;
+}
+.panel__head {
+  padding: 8px 16px;
+  background: var(--c-cyan);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+.panel__body { padding: 4px 16px 20px; }
+.panel--tinted { background: #EAF9FE; border-color: var(--c-line-cyan); }
+.panel--tinted .panel__body { padding-top: 20px; }
 
-.section__title {
-  font-size: clamp(22px, 3.4vw, 34px);
+.ttype + .ttype { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--c-line-cyan); }
+.ttype__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  font-size: 20px;
   font-weight: 800;
-  line-height: 1.5;
+}
+.ttype__title svg { width: 30px; height: 30px; flex: none; color: var(--c-blue); fill: none; }
+.ttype__text { margin-top: 10px; }
+.ttype .btn { margin-top: 16px; }
+
+/* ============================================================
+   9. 人気のご利用シーン
+   ============================================================ */
+.scene {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.scene__img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.scene__body { padding: 22px 18px 26px; }
+.scene__title {
+  color: var(--c-cyan);
+  font-size: 22px;
+  font-weight: 800;
   text-align: center;
 }
+.scene__text { margin-top: 14px; }
 
-.section__desc {
-  max-width: 720px;
-  margin: 16px auto 0;
-  color: var(--color-text-muted);
-  text-align: center;
+/* ============================================================
+   10. バナー
+   ============================================================ */
+.banner { display: block; border-radius: var(--radius); overflow: hidden; }
+.banner img { display: block; width: 100%; }
+
+.consult { border-radius: var(--radius); overflow: hidden; }
+.consult__img { display: block; width: 100%; }
+.consult__btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #14181B;
+  border: 0;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color .2s;
 }
+.consult__btn:hover { background: #2A3238; }
 
-/* --- カード ------------------------------------------------ */
-.cards {
-  display: grid;
-  /* 画面幅に応じて自動で1〜3列に切り替わる */
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
-}
-
-.card {
-  padding: 20px;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
+/* ============================================================
+   11. 開催予定のグループレッスン / イベント
+   ============================================================ */
+.tabs { display: flex; gap: 10px; margin-bottom: 8px; }
+.tab {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px 4px;
+  background: #fff;
+  border: 2px solid var(--c-line-cyan);
   border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s;
 }
-.section--tinted .card { background: #fff; }
+.tab:hover { background: #F2FBFE; }
+.tab.is-active {
+  background: var(--c-cyan);
+  border-color: var(--c-cyan);
+  color: #fff;
+}
 
-.card__title {
-  font-size: 18px;
+.tabs__empty {
+  padding: 32px 0;
+  color: var(--c-text-sub);
+  text-align: center;
+}
+
+.lesson { padding: 24px 0; border-top: 1px solid var(--c-line); }
+.lesson[hidden] { display: none; }
+
+.lesson__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  display: inline-block;
+  padding: 2px 12px;
+  background: var(--c-blue);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.6;
 }
+.tag--red { background: var(--c-red); }
 
-.card__text {
-  margin-top: 8px;
-  font-size: 15px;
-  color: var(--color-text-muted);
-}
-
-/* ============================================================
-   6. お問い合わせ導線
-   ============================================================ */
-.cta {
-  padding-block: var(--space-section);
-  background: var(--color-primary);
-  color: #fff;
-}
-
-.cta__inner { text-align: center; }
-
-.cta__title {
-  font-size: clamp(22px, 3.4vw, 32px);
+.lesson__title {
+  margin-top: 12px;
+  color: var(--c-cyan);
+  font-size: 20px;
   font-weight: 800;
   line-height: 1.5;
 }
+.lesson__title a:hover { text-decoration: underline; }
 
-.cta__text { margin-top: 16px; }
+.lesson__date { margin-top: 10px; font-size: 24px; font-weight: 800; line-height: 1.35; }
+.lesson__price { font-size: 17px; font-weight: 700; }
+.lesson__price s { color: var(--c-text-sub); font-weight: 400; }
+.lesson__price strong { color: var(--c-red); font-size: 19px; }
 
-.cta .btn--primary {
-  margin-top: 32px;
-  background: #fff;
-  color: var(--color-primary);
+.lesson__early { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.lesson__early-text { color: var(--c-red); font-size: 17px; font-weight: 800; }
+
+/* --- 定義リスト（対象・募集日時など） ---------------------- */
+.spec {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 10px 12px;
+  margin-top: 14px;
+  font-size: 15px;
 }
-.cta .btn--primary:hover { background: #eef2fb; }
-
-/* ============================================================
-   7. フッター
-   ============================================================ */
-.footer {
-  padding-top: clamp(40px, 6vw, 64px);
-  padding-bottom: 24px;
-  background: #12161d;
-  color: #cfd5e0;
+.spec dt {
+  padding: 1px 10px;
+  border: 1.5px solid var(--c-line-cyan);
+  border-radius: 4px;
+  color: var(--c-blue);
   font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: center;
+  white-space: nowrap;
+  align-self: start;
 }
+.spec dd { margin: 0; line-height: 1.6; }
 
-.footer__inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 32px;
-}
+/* --- コーチの行 -------------------------------------------- */
+.coach-row { display: flex; align-items: center; gap: 14px; margin-top: 18px; }
+.coach-row__body { min-width: 0; }
+.coach-row__role { color: var(--c-text-sub); font-size: 15px; line-height: 1.55; }
+.coach-row__name { font-size: 18px; font-weight: 800; }
+.flag { margin-right: 2px; }
 
-.footer__logo-text {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: .08em;
+.avatar {
+  flex: none;
+  display: grid;
+  place-content: center;
+  width: 74px; height: 74px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #D9E3E8;
   color: #fff;
 }
+.avatar svg { width: 46px; height: 46px; fill: none; opacity: .9; }
+.avatar--a { background: #8FB8CE; }
+.avatar--b { background: #A9C6A0; }
+.avatar--c { background: #C7B08E; }
+.avatar--d { background: #93AEC8; }
+.avatar--e { background: #C79FA8; }
+.avatar--f { background: #9FA9B8; }
+.avatar--green  { background: #CFE6C4; color: #4E6B49; }
+.avatar--purple { background: #CFCDEB; color: #4E4A72; }
 
-.footer__note { margin-top: 8px; }
+.rating { display: flex; align-items: center; gap: 8px; line-height: 1.4; }
+.rating__stars { color: var(--c-orange); font-size: 19px; letter-spacing: .05em; }
+.rating b { font-size: 19px; font-weight: 800; }
+.rating__count { color: var(--c-text-sub); font-size: 17px; }
 
-.footer__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 24px;
+/* ============================================================
+   12. よくある質問
+   ============================================================ */
+.faq { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+
+.faq__item {
+  background: #fff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
-.footer__list a:hover { color: #fff; }
+.faq__item summary {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+
+.faq__q {
+  flex: none;
+  display: grid;
+  place-content: center;
+  width: 54px;
+  background: var(--c-cyan);
+  color: #fff;
+  font-size: 21px;
+  font-weight: 800;
+}
+.faq__label {
+  flex: 1;
+  padding: 16px 44px 16px 16px;
+  font-size: 16px;
+}
+/* 右端の下向き矢印 */
+.faq__item summary::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  width: 11px; height: 11px;
+  margin-top: 20px;
+  border-right: 2.5px solid #9AA4AB;
+  border-bottom: 2.5px solid #9AA4AB;
+  transform: rotate(45deg);
+  transition: transform .2s;
+}
+.faq__item { position: relative; }
+.faq__item[open] summary::after { transform: rotate(-135deg); margin-top: 25px; }
+
+.faq__a { padding: 0 16px 18px 70px; }
+
+/* ============================================================
+   13. 新着コーチ
+   ============================================================ */
+.coach-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.coach-card {
+  padding: 18px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+}
+.coach-card .coach-row { margin-top: 0; }
+.coach-card__note { margin-top: 14px; }
+
+/* ============================================================
+   14. 新着の口コミ
+   ============================================================ */
+.review-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.review {
+  display: flex;
+  gap: 14px;
+  padding: 18px;
+  background: #fff;
+  border: 1.5px solid var(--c-line-cyan);
+  border-radius: var(--radius);
+}
+.review__body { min-width: 0; }
+.review__course {
+  display: inline-block;
+  color: var(--c-cyan);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.review .rating { margin-top: 8px; }
+.review__meta { color: var(--c-text-sub); font-size: 15px; }
+.review__meta b { color: var(--c-text); font-size: 17px; font-weight: 800; }
+.review__meta time { margin-left: 10px; }
+.review__text { margin-top: 10px; }
+
+/* ============================================================
+   15. 人気の競技カテゴリー（詳細）
+   ============================================================ */
+.cat-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.cat {
+  position: relative;
+  display: block;
+  padding: 18px 44px 20px 18px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  transition: transform .15s, box-shadow .15s;
+}
+.cat:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.07); }
+.cat__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 800;
+}
+.cat__title svg { width: 32px; height: 32px; flex: none; fill: none; }
+.cat__text { margin-top: 8px; font-size: 15px; }
+.cat__arrow {
+  position: absolute;
+  top: 50%; right: 18px;
+  width: 12px; height: 12px;
+  margin-top: -6px;
+  border-top: 3px solid var(--c-cyan);
+  border-right: 3px solid var(--c-cyan);
+  transform: rotate(45deg);
+}
+
+/* ============================================================
+   16. ページの先頭に戻る
+   ============================================================ */
+.pagetop {
+  display: block;
+  padding: 14px;
+  background: #8A9096;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+}
+.pagetop:hover { background: #757B81; }
+
+/* ============================================================
+   17. フッター
+   ============================================================ */
+.footer { padding-top: 28px; background: #fff; }
+.footer__login { margin-top: 16px; text-align: center; }
+.footer__login .link { text-decoration: underline; }
+
+.footer__menu { margin-top: 28px; border-top: 1px solid var(--c-line); }
+
+.fmenu { border-bottom: 1px solid var(--c-line); }
+.fmenu summary {
+  position: relative;
+  padding: 16px var(--gutter);
+  font-size: 16px;
+  cursor: pointer;
+  list-style: none;
+}
+.fmenu summary::-webkit-details-marker { display: none; }
+.fmenu summary::after {
+  content: "";
+  position: absolute;
+  top: 50%; right: 22px;
+  width: 10px; height: 10px;
+  margin-top: -8px;
+  border-right: 2.5px solid #9AA4AB;
+  border-bottom: 2.5px solid #9AA4AB;
+  transform: rotate(45deg);
+  transition: transform .2s;
+}
+.fmenu[open] summary::after { transform: rotate(-135deg); margin-top: -3px; }
+
+.fmenu ul { padding: 0 var(--gutter) 12px; }
+.fmenu li a {
+  display: block;
+  padding: 9px 0 9px 14px;
+  color: var(--c-text-sub);
+  font-size: 15px;
+}
+.fmenu li a:hover { color: var(--c-blue); }
 
 .footer__copyright {
-  margin: 40px 0 0;
-  font-size: 12px;
+  padding: 22px var(--gutter);
+  color: var(--c-text-sub);
+  font-size: 13px;
   text-align: center;
-  color: #8b93a3;
 }
 
 /* ============================================================
-   8. レスポンシブ（スマホ・タブレット）
+   18. チャットウィジェット・営業時間バー（画面下に固定）
    ============================================================ */
-@media (max-width: 900px) {
-  .hero__inner {
-    grid-template-columns: 1fr;   /* 1列に積み替え */
-  }
-  .hero__visual { order: -1; }    /* 画像を先頭に */
+.chat {
+  position: fixed;
+  right: 12px;
+  bottom: calc(var(--hours-h) + 10px);
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chat[hidden] { display: none; }
+
+.chat__bubble {
+  position: relative;
+  max-width: min(60vw, 300px);
+  padding: 10px 16px;
+  background: var(--c-cyan);
+  border: 2px dashed rgba(255,255,255,.85);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+}
+.chat__bubble::after {
+  content: "";
+  position: absolute;
+  top: 50%; right: -12px;
+  margin-top: -8px;
+  border: 8px solid transparent;
+  border-left-color: var(--c-cyan);
 }
 
-@media (max-width: 768px) {
-  .header__toggle { display: flex; }
-
-  /* メニューを画面いっぱいのパネルとして開く */
-  .nav {
-    position: fixed;
-    inset: var(--header-height) 0 auto 0;
-    max-height: calc(100dvh - var(--header-height));
-    overflow-y: auto;
-    background: #fff;
-    border-bottom: 1px solid var(--color-border);
-    transform: translateY(-8px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .2s, transform .2s, visibility .2s;
-  }
-  .nav.is-open {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .nav__list {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 8px var(--space-gutter) 24px;
-  }
-  .nav__item + .nav__item { border-top: 1px solid var(--color-border); }
-  .nav__link {
-    display: block;
-    padding: 16px 0;
-    font-size: 16px;
-  }
-  .nav__item--cta {
-    border-top: 0;
-    margin-top: 16px;
-  }
-  .nav__item--cta .btn { width: 100%; }
+.chat__avatar {
+  flex: none;
+  display: grid;
+  place-content: center;
+  width: 66px; height: 66px;
+  background: #EAF6EF;
+  border: 3px solid var(--c-cyan);
+  border-radius: 50%;
+  color: #6E8E9C;
 }
+.chat__avatar svg { width: 40px; height: 40px; fill: none; }
 
-@media (max-width: 480px) {
-  .hero__actions .btn { width: 100%; }   /* ボタンを縦積みにして押しやすく */
-  .footer__inner { flex-direction: column; }
+.chat__close {
+  position: absolute;
+  top: -8px; right: -6px;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  width: 30px; height: 30px;
+  padding: 0;
+  background: rgba(120,130,138,.9);
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+}
+.chat__close svg { width: 18px; height: 18px; fill: none; }
+
+.hours {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 85;
+  height: var(--hours-h);
+  display: flex;
+  align-items: center;
+  padding-inline: var(--gutter);
+  background: var(--c-teal-deep);
+  color: #fff;
+  font-size: 17px;
 }
 
 /* ============================================================
-   9. アクセシビリティ
+   19. パソコン向けの調整
+   （参考サイトのPC表示は未確認のため、独自にレイアウトしています）
    ============================================================ */
-/* 動きを減らす設定にしている人には、アニメーションを止める */
+@media (min-width: 768px) {
+  :root { --gutter: 24px; }
+
+  .section { padding-block: 64px; }
+  .section__title { font-size: 30px; }
+
+  .hero__inner { min-height: 420px; padding-block: 64px 80px; }
+  .hero__line { font-size: 40px; padding: 6px 20px; }
+
+  .cat-grid { grid-template-columns: repeat(8, 1fr); }
+
+  .panel__body { padding-inline: 24px; }
+
+  .scene { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+  .scene__img { height: 100%; aspect-ratio: auto; min-height: 260px; }
+  .scene__title { text-align: left; }
+  .scene__body { padding: 28px; }
+
+  .coach-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cat-list   { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .lesson { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 0 32px; }
+  .lesson__tags, .lesson__title, .lesson__date,
+  .lesson__price, .lesson__early { grid-column: 1; }
+  .spec { grid-column: 1; }
+  .coach-row { grid-column: 2; grid-row: 1 / -1; align-self: start; margin-top: 0; }
+
+  .footer__menu { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .fmenu { border-inline-end: 1px solid var(--c-line); }
+  .fmenu:last-child { border-inline-end: 0; }
+}
+
+@media (min-width: 1024px) {
+  .hours { font-size: 15px; }
+  .chat__bubble { font-size: 15px; }
+}
+
+@media (max-width: 420px) {
+  .lesson__date { font-size: 21px; }
+  .drawer__close { right: 8px; color: var(--c-text); }
+}
+
+/* ============================================================
+   20. アクセシビリティ
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -464,8 +926,4 @@ p {
   }
 }
 
-/* キーボード操作時のフォーカス表示 */
-:focus-visible {
-  outline: 3px solid var(--color-accent);
-  outline-offset: 2px;
-}
+:focus-visible { outline: 3px solid var(--c-blue); outline-offset: 2px; }
