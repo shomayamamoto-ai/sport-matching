@@ -1,0 +1,78 @@
+# ============================================================
+# GitHub Pages に公開するワークフロー
+#
+# 【重要】公開するのは brand/（独自ブランド版）だけです。
+# ルートの再現版は、実在サービスのロゴ・コーチ実名を含むため
+# 公開対象から外しています。設定を変える場合はご注意ください。
+# ============================================================
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - claude/dream-coaching-site-replica-c8k00u
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 公開は同時に1つだけ動かす（進行中のものはキャンセルしない）
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: 公開用フォルダを組み立てる
+        run: |
+          set -eux
+          rm -rf _site
+          mkdir -p _site/pages _site/assets
+
+          # 独自ブランド版だけをコピーする
+          cp brand/index.html      _site/index.html
+          cp brand/pages/*.html    _site/pages/
+          cp -r assets/.           _site/assets/
+
+          # 階層が変わるぶん、CSS・JS・画像へのパスを合わせる
+          #   brand/index.html      : ../assets/    -> assets/
+          #   brand/pages/*.html    : ../../assets/ -> ../assets/
+          sed -i 's|"\.\./assets/|"assets/|g'       _site/index.html
+          sed -i 's|"\.\./\.\./assets/|"../assets/|g' _site/pages/*.html
+
+          # Jekyll による加工を無効にする
+          touch _site/.nojekyll
+
+          # パスの書き換え漏れがないか確認する（あれば失敗させる）
+          if grep -rn '"\.\./\.\./assets/' _site/ ; then
+            echo "::error::パスの書き換えに漏れがあります"; exit 1
+          fi
+          echo "生成したファイル数: $(find _site -type f | wc -l)"
+
+      - name: Pages の設定を用意する
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: 公開用ファイルをアップロードする
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: GitHub Pages に公開する
+        id: deployment
+        uses: actions/deploy-pages@v4
