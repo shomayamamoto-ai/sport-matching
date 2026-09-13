@@ -71,6 +71,28 @@
       <path d="M27 14v10l7 7M27 24l-6 6 3 10M21 30l-8-3M34 31l1 9"/>
       <path d="M40 8v11a4 4 0 1 1-3-3.9V8z" fill="currentColor" stroke="none" opacity=".55"/>
     </g>
+    <g id="i-home" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 21L24 6l18 15"/><path d="M11 25v16h26V25"/><path d="M19 41V30h10v11"/>
+    </g>
+    <g id="i-search" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="21" cy="21" r="13"/><path d="M31 31l11 11"/>
+    </g>
+    <g id="i-heart" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 40S6 29 6 17.5A9.5 9.5 0 0 1 24 13a9.5 9.5 0 0 1 18 4.5C42 29 24 40 24 40z"/>
+    </g>
+    <g id="i-menu" stroke="currentColor" stroke-width="2.8" fill="none" stroke-linecap="round">
+      <path d="M8 15h32M8 24h32M8 33h32"/>
+    </g>
+    <g id="i-chat" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M42 26c0 8.8-8.1 16-18 16-2.6 0-5.1-.5-7.3-1.4L6 43l3.2-8.2A15 15 0 0 1 6 26c0-8.8 8.1-16 18-16s18 7.2 18 16z"/>
+      <path d="M17 24h14M17 31h9"/>
+    </g>
+    <g id="i-up" stroke="currentColor" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 39V11M12 23L24 11l12 12"/>
+    </g>
+    <g id="i-check" stroke="currentColor" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 25l10 10 19-21"/>
+    </g>
     <g id="i-person" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="24" cy="15" r="7"/><path d="M9 41c0-8.3 6.7-15 15-15s15 6.7 15 15"/>
     </g>
@@ -108,6 +130,27 @@
       </div>
     </div>
   </div>
+
+  <div class="header__sub">
+    <div class="container">
+      <nav class="gnav" aria-label="主なメニュー">
+        <ul>
+          <li><a href="../pages/coaches.html">コーチを探す</a></li>
+          <li><a href="../pages/categories.html">競技から探す</a></li>
+          <li><a href="../pages/lessons.html" aria-current="page">レッスン</a></li>
+          <li><a href="../pages/guide.html">はじめての方へ</a></li>
+        </ul>
+      </nav>
+      <form class="searchbar" role="search" data-target="../pages/coaches.html">
+        <svg class="searchbar__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-search"/></svg>
+        <label class="skip-link" for="hdrSearch">コーチ・競技を検索</label>
+        <input class="searchbar__input" id="hdrSearch" type="search"
+               placeholder="コーチ名・競技・地域で検索" autocomplete="off">
+        <button class="searchbar__btn" type="submit">検索</button>
+      </form>
+    </div>
+  </div>
+
   <div class="header__welcome">
     <div class="container">
       ようこそスポーツマッチングへ
@@ -132,21 +175,18 @@
   </div>
   <p class="drawer__group">トレーニングを探す</p>
   <ul class="drawer__list">
-    <li><a href="../pages/categories.html">競技カテゴリーから探す</a></li>
     <li><a href="../pages/coaches.html">コーチから探す</a></li>
+    <li><a href="../pages/categories.html">競技カテゴリーから探す</a></li>
     <li><a href="../pages/lessons.html">グループレッスン / イベント</a></li>
+    <li><a href="../pages/coaches.html#fav=1">お気に入りのコーチ<span id="favCount"></span></a></li>
   </ul>
   <p class="drawer__group">マイページ</p>
   <ul class="drawer__list">
     <li><a href="../pages/login.html">マイページTOP</a></li>
-    <li><a href="../pages/login.html">お気に入り一覧</a></li>
     <li><a href="../pages/login.html">予約履歴一覧（個人指導）</a></li>
     <li><a href="../pages/login.html">予約履歴一覧（グループレッスン）</a></li>
     <li><a href="../pages/login.html">プロフィール編集</a></li>
-    <li><a href="../pages/login.html">グループメンバー編集</a></li>
-    <li><a href="../pages/login.html">メールアドレス変更</a></li>
-    <li><a href="../pages/login.html">パスワード変更</a></li>
-    <li><a href="../pages/login.html">電話番号変更</a></li>
+    <li><a href="../pages/login.html">メールアドレス・パスワード変更</a></li>
     <li><a href="../pages/login.html">クレジットカード登録</a></li>
   </ul>
   <p class="drawer__group">ヘルプ</p>
@@ -157,7 +197,6 @@
     <li><a href="../pages/guide.html#safety">安全への取り組み</a></li>
     <li><a href="../pages/faq.html">よくあるご質問</a></li>
     <li><a href="../pages/contact.html">お問い合わせ</a></li>
-    <li><a href="../pages/contact.html">コーチ登録をご希望の方</a></li>
   </ul>
 </nav>
 <p class="demo-note">このページはデモです。掲載しているコーチ名・口コミ・料金はすべて架空のサンプルです。</p>
@@ -364,8 +403,8 @@
     <details class="fmenu">
       <summary>コンテンツ</summary>
       <ul>
-        <li><a href="../pages/categories.html">競技カテゴリーから探す</a></li>
         <li><a href="../pages/coaches.html">コーチから探す</a></li>
+        <li><a href="../pages/categories.html">競技カテゴリーから探す</a></li>
         <li><a href="../pages/lessons.html">グループレッスン / イベント</a></li>
         <li><a href="../pages/reviews.html">口コミ一覧</a></li>
       </ul>
@@ -386,21 +425,35 @@
 </footer>
 
 <!-- ============================================================
-     チャットウィジェット（画面右下に固定）
+     画面下に固定するパーツ
      ============================================================ -->
-<div class="chat" id="chat">
-  <button class="chat__close" id="chatClose" type="button" aria-label="チャットの案内を閉じる">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-  </button>
-  <button class="chat__bubble" type="button" data-open-chat>
-    チャット受付中です！<br>お気軽にお問合せください
-  </button>
-  <span class="chat__avatar" aria-hidden="true">
-    <svg viewBox="0 0 48 48"><use href="#i-person"/></svg>
-  </span>
-</div>
+<p class="chat-tip" id="chatTip" hidden>
+  チャットで相談できます（9:00〜）
+  <button class="chat-tip__close" id="chatTipClose" type="button">閉じる</button>
+</p>
 
-<p class="hours">9:00から営業</p>
+<button class="fab fab--top is-hidden" id="topBtn" type="button" aria-label="ページの先頭に戻る">
+  <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-up"/></svg>
+</button>
+
+<button class="fab fab--chat" type="button" data-open-chat aria-label="チャットで相談する">
+  <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-chat"/></svg>
+</button>
+
+<nav class="tabbar" aria-label="かんたんメニュー">
+  <a href="../index.html">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-home"/></svg>ホーム
+  </a>
+  <a href="../pages/coaches.html">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-search"/></svg>探す
+  </a>
+  <a href="../pages/coaches.html#fav=1">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>お気に入り
+  </a>
+  <a href="../pages/guide.html">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-guide"/></svg>ガイド
+  </a>
+</nav>
 
 <script src="../../assets/js/main.js"></script>
 </body>

@@ -70,6 +70,28 @@
       <path d="M27 14v10l7 7M27 24l-6 6 3 10M21 30l-8-3M34 31l1 9"/>
       <path d="M40 8v11a4 4 0 1 1-3-3.9V8z" fill="currentColor" stroke="none" opacity=".55"/>
     </g>
+    <g id="i-home" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 21L24 6l18 15"/><path d="M11 25v16h26V25"/><path d="M19 41V30h10v11"/>
+    </g>
+    <g id="i-search" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="21" cy="21" r="13"/><path d="M31 31l11 11"/>
+    </g>
+    <g id="i-heart" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 40S6 29 6 17.5A9.5 9.5 0 0 1 24 13a9.5 9.5 0 0 1 18 4.5C42 29 24 40 24 40z"/>
+    </g>
+    <g id="i-menu" stroke="currentColor" stroke-width="2.8" fill="none" stroke-linecap="round">
+      <path d="M8 15h32M8 24h32M8 33h32"/>
+    </g>
+    <g id="i-chat" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M42 26c0 8.8-8.1 16-18 16-2.6 0-5.1-.5-7.3-1.4L6 43l3.2-8.2A15 15 0 0 1 6 26c0-8.8 8.1-16 18-16s18 7.2 18 16z"/>
+      <path d="M17 24h14M17 31h9"/>
+    </g>
+    <g id="i-up" stroke="currentColor" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 39V11M12 23L24 11l12 12"/>
+    </g>
+    <g id="i-check" stroke="currentColor" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 25l10 10 19-21"/>
+    </g>
     <g id="i-person" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="24" cy="15" r="7"/><path d="M9 41c0-8.3 6.7-15 15-15s15 6.7 15 15"/>
     </g>
@@ -108,6 +130,27 @@
       </div>
     </div>
   </div>
+
+  <div class="header__sub">
+    <div class="container">
+      <nav class="gnav" aria-label="主なメニュー">
+        <ul>
+          <li><a href="../pages/coaches.html" aria-current="page">コーチを探す</a></li>
+          <li><a href="../pages/categories.html">競技から探す</a></li>
+          <li><a href="../pages/lessons.html">レッスン</a></li>
+          <li><a href="../pages/guide.html">はじめての方へ</a></li>
+        </ul>
+      </nav>
+      <form class="searchbar" role="search" data-target="../pages/coaches.html">
+        <svg class="searchbar__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-search"/></svg>
+        <label class="skip-link" for="hdrSearch">コーチ・競技を検索</label>
+        <input class="searchbar__input" id="hdrSearch" type="search"
+               placeholder="コーチ名・競技・地域で検索" autocomplete="off">
+        <button class="searchbar__btn" type="submit">検索</button>
+      </form>
+    </div>
+  </div>
+
   <div class="header__welcome">
     <div class="container">
       ようこそドリームコーチングへ
@@ -132,21 +175,18 @@
   </div>
   <p class="drawer__group">トレーニングを探す</p>
   <ul class="drawer__list">
-    <li><a href="../pages/categories.html">競技カテゴリーから探す</a></li>
     <li><a href="../pages/coaches.html">コーチから探す</a></li>
+    <li><a href="../pages/categories.html">競技カテゴリーから探す</a></li>
     <li><a href="../pages/lessons.html">グループレッスン / イベント</a></li>
+    <li><a href="../pages/coaches.html#fav=1">お気に入りのコーチ<span id="favCount"></span></a></li>
   </ul>
   <p class="drawer__group">マイページ</p>
   <ul class="drawer__list">
     <li><a href="../pages/login.html">マイページTOP</a></li>
-    <li><a href="../pages/login.html">お気に入り一覧</a></li>
     <li><a href="../pages/login.html">予約履歴一覧（個人指導）</a></li>
     <li><a href="../pages/login.html">予約履歴一覧（グループレッスン）</a></li>
     <li><a href="../pages/login.html">プロフィール編集</a></li>
-    <li><a href="../pages/login.html">グループメンバー編集</a></li>
-    <li><a href="../pages/login.html">メールアドレス変更</a></li>
-    <li><a href="../pages/login.html">パスワード変更</a></li>
-    <li><a href="../pages/login.html">電話番号変更</a></li>
+    <li><a href="../pages/login.html">メールアドレス・パスワード変更</a></li>
     <li><a href="../pages/login.html">クレジットカード登録</a></li>
   </ul>
   <p class="drawer__group">ヘルプ</p>
@@ -157,7 +197,6 @@
     <li><a href="../pages/guide.html#safety">安全への取り組み</a></li>
     <li><a href="../pages/faq.html">よくあるご質問</a></li>
     <li><a href="../pages/contact.html">お問い合わせ</a></li>
-    <li><a href="../pages/contact.html">コーチ登録をご希望の方</a></li>
   </ul>
 </nav>
 <p class="demo-note">このページは既存サイトの見た目を再現したものです。実在のサービスではありません。</p>
@@ -173,224 +212,403 @@
       </ol>
     </nav>
     <h1 class="page-head__title">コーチから探す</h1>
-    <p class="page-head__lead">12名のコーチが登録しています。競技でしぼり込んで、目標に合うコーチを見つけてください。</p>
+    <p class="page-head__lead">12名のコーチが登録しています。競技・地域・料金でしぼり込めます。</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container container--narrow">
+
     <div class="filters">
-      <p class="filters__label">競技でしぼり込む</p>
-      <div class="chips" id="sportChips">
-        <button class="chip is-active" type="button" data-sport="all">すべて</button>
-        <button class="chip" type="button" data-sport="かけっこ">かけっこ</button>
-        <button class="chip" type="button" data-sport="陸上">陸上</button>
-        <button class="chip" type="button" data-sport="水泳">水泳</button>
-        <button class="chip" type="button" data-sport="野球">野球</button>
-        <button class="chip" type="button" data-sport="サッカー">サッカー</button>
-        <button class="chip" type="button" data-sport="バレーボール">バレーボール</button>
-        <button class="chip" type="button" data-sport="体操">体操</button>
-        <button class="chip" type="button" data-sport="学校体育">学校体育</button>
-        <button class="chip" type="button" data-sport="新体操">新体操</button>
-        <button class="chip" type="button" data-sport="バスケットボール">バスケットボール</button>
-        <button class="chip" type="button" data-sport="テニス">テニス</button>
-        <button class="chip" type="button" data-sport="体づくり">体づくり</button>
-        <button class="chip" type="button" data-sport="ダンス">ダンス</button>
+      <div class="field">
+        <label class="field__label" for="kwInput">キーワードで探す</label>
+        <input class="input" id="kwInput" type="search" autocomplete="off"
+               placeholder="例：水泳、元日本代表、東京">
+      </div>
+
+      <div class="filter-group" data-facet="sport">
+        <p class="filters__label">競技</p>
+        <div class="chips">
+          <button class="chip is-active" type="button" data-value="all">すべて</button>
+          <button class="chip" type="button" data-value="かけっこ">かけっこ</button>
+          <button class="chip" type="button" data-value="陸上">陸上</button>
+          <button class="chip" type="button" data-value="水泳">水泳</button>
+          <button class="chip" type="button" data-value="野球">野球</button>
+          <button class="chip" type="button" data-value="サッカー">サッカー</button>
+          <button class="chip" type="button" data-value="バレーボール">バレーボール</button>
+          <button class="chip" type="button" data-value="体操">体操</button>
+          <button class="chip" type="button" data-value="学校体育">学校体育</button>
+          <button class="chip" type="button" data-value="新体操">新体操</button>
+          <button class="chip" type="button" data-value="バスケットボール">バスケットボール</button>
+          <button class="chip" type="button" data-value="テニス">テニス</button>
+          <button class="chip" type="button" data-value="体づくり">体づくり</button>
+          <button class="chip" type="button" data-value="ダンス">ダンス</button>
+        </div>
+      </div>
+
+      <div class="filter-group" data-facet="area">
+        <p class="filters__label">地域</p>
+        <div class="chips">
+          <button class="chip is-active" type="button" data-value="all">すべて</button>
+          <button class="chip" type="button" data-value="東京">東京</button>
+          <button class="chip" type="button" data-value="神奈川">神奈川</button>
+          <button class="chip" type="button" data-value="埼玉">埼玉</button>
+          <button class="chip" type="button" data-value="千葉">千葉</button>
+          <button class="chip" type="button" data-value="オンライン">オンライン</button>
+          <button class="chip" type="button" data-value="大阪">大阪</button>
+          <button class="chip" type="button" data-value="愛知">愛知</button>
+        </div>
+      </div>
+
+      <div class="filter-group" data-facet="price">
+        <p class="filters__label">60分あたりの料金</p>
+        <div class="chips">
+          <button class="chip is-active" type="button" data-value="all">すべて</button>
+          <button class="chip" type="button" data-value="lt6000">6,000円未満</button>
+          <button class="chip" type="button" data-value="mid">6,000〜7,499円</button>
+          <button class="chip" type="button" data-value="gte7500">7,500円以上</button>
+        </div>
+      </div>
+
+      <div class="filter-group" data-facet="online">
+        <p class="filters__label">受講方法</p>
+        <div class="chips">
+          <button class="chip" type="button" data-value="1" aria-pressed="false">オンライン対応のみ</button>
+        </div>
       </div>
     </div>
 
-    <p class="result-count"><b id="coachCount">12</b> 件のコーチ</p>
+    <div class="toolbar">
+      <p class="toolbar__count"><b id="coachCount">12</b> 件のコーチ</p>
+      <span class="toolbar__spacer"></span>
+      <label class="skip-link" for="sortSelect">並び替え</label>
+      <select class="select" id="sortSelect">
+        <option value="recommend">おすすめ順</option>
+        <option value="rate">評価が高い順</option>
+        <option value="reviews">口コミが多い順</option>
+        <option value="price-asc">料金が安い順</option>
+        <option value="price-desc">料金が高い順</option>
+      </select>
+      <button class="toolbar__clear" id="clearBtn" type="button">条件をクリア</button>
+    </div>
 
     <ul class="coach-grid" id="coachGrid">
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="かけっこ,陸上">
-        <div class="coach-row">
-          <span class="avatar avatar--f"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">元大学駅伝ランナー｜ランニング指導歴8年</p>
-            <p class="coach-row__name">山田 太一 コーチ</p>
-          </div>
+      <li class="coach-item" data-id="c01"
+          data-sports="かけっこ,陸上" data-area="東京"
+          data-price="6000" data-rate="5.0" data-cnt="128"
+          data-online="0" data-order="0"
+          data-search="山田 太一 山田太一 元大学駅伝ランナー｜ランニング指導歴8年 東京 かけっこ 陸上">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c01.html">
+            <div class="coach-row">
+              <span class="avatar avatar--f"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">元大学駅伝ランナー｜ランニング指導歴8年</p>
+                <p class="coach-row__name">山田 太一 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">かけっこ</span><span class="tag tag--soft">陸上</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(128)</span></span>
+              <span>60分 <b>6,000円</b></span>
+              <span>東京</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c01" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">かけっこ</span><span class="tag tag--soft">陸上</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(128)</span></span>
-          <span>60分 <b>6,000円〜</b></span>
-          <span>東京</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="水泳">
-        <div class="coach-row">
-          <span class="avatar avatar--d"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">元競泳日本代表｜水泳指導歴12年</p>
-            <p class="coach-row__name">佐々木 美咲 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c02"
+          data-sports="水泳" data-area="神奈川"
+          data-price="7500" data-rate="4.9" data-cnt="96"
+          data-online="0" data-order="1"
+          data-search="佐々木 美咲 佐々木美咲 元競泳日本代表｜水泳指導歴12年 神奈川 水泳">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c02.html">
+            <div class="coach-row">
+              <span class="avatar avatar--d"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">元競泳日本代表｜水泳指導歴12年</p>
+                <p class="coach-row__name">佐々木 美咲 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">水泳</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(96)</span></span>
+              <span>60分 <b>7,500円</b></span>
+              <span>神奈川</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c02" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">水泳</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(96)</span></span>
-          <span>60分 <b>7,500円〜</b></span>
-          <span>神奈川</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="野球">
-        <div class="coach-row">
-          <span class="avatar avatar--d"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">元プロ野球選手｜投手コーチ経験あり</p>
-            <p class="coach-row__name">川上 蓮 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c03"
+          data-sports="野球" data-area="東京"
+          data-price="8000" data-rate="5.0" data-cnt="212"
+          data-online="0" data-order="2"
+          data-search="川上 蓮 川上蓮 元プロ野球選手｜投手コーチ経験あり 東京 野球">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c03.html">
+            <div class="coach-row">
+              <span class="avatar avatar--d"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">元プロ野球選手｜投手コーチ経験あり</p>
+                <p class="coach-row__name">川上 蓮 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">野球</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(212)</span></span>
+              <span>60分 <b>8,000円</b></span>
+              <span>東京</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c03" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">野球</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(212)</span></span>
-          <span>60分 <b>8,000円〜</b></span>
-          <span>東京</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="サッカー">
-        <div class="coach-row">
-          <span class="avatar avatar--a"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">元Ｊリーガー｜JFA公認指導者資格</p>
-            <p class="coach-row__name">東 悠真 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c04"
+          data-sports="サッカー" data-area="埼玉"
+          data-price="6500" data-rate="4.8" data-cnt="74"
+          data-online="0" data-order="3"
+          data-search="東 悠真 東悠真 元ｊリーガー｜jfa公認指導者資格 埼玉 サッカー">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c04.html">
+            <div class="coach-row">
+              <span class="avatar avatar--a"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">元Ｊリーガー｜JFA公認指導者資格</p>
+                <p class="coach-row__name">東 悠真 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">サッカー</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.8">★★★★★</span> <b>4.8</b> <span class="rating__count">(74)</span></span>
+              <span>60分 <b>6,500円</b></span>
+              <span>埼玉</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c04" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">サッカー</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.8">★★★★★</span> <b>4.8</b> <span class="rating__count">(74)</span></span>
-          <span>60分 <b>6,500円〜</b></span>
-          <span>埼玉</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="バレーボール">
-        <div class="coach-row">
-          <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">元Ｖリーグ選手｜ジュニア指導が得意</p>
-            <p class="coach-row__name">松原 千夏 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c05"
+          data-sports="バレーボール" data-area="千葉"
+          data-price="6000" data-rate="5.0" data-cnt="58"
+          data-online="0" data-order="4"
+          data-search="松原 千夏 松原千夏 元ｖリーグ選手｜ジュニア指導が得意 千葉 バレーボール">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c05.html">
+            <div class="coach-row">
+              <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">元Ｖリーグ選手｜ジュニア指導が得意</p>
+                <p class="coach-row__name">松原 千夏 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">バレーボール</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(58)</span></span>
+              <span>60分 <b>6,000円</b></span>
+              <span>千葉</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c05" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">バレーボール</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(58)</span></span>
-          <span>60分 <b>6,000円〜</b></span>
-          <span>千葉</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="体操,学校体育">
-        <div class="coach-row">
-          <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">体操競技 全日本選手権出場</p>
-            <p class="coach-row__name">白石 大輔 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c06"
+          data-sports="体操,学校体育" data-area="東京"
+          data-price="7000" data-rate="4.9" data-cnt="143"
+          data-online="1" data-order="5"
+          data-search="白石 大輔 白石大輔 体操競技 全日本選手権出場 東京 体操 学校体育">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c06.html">
+            <div class="coach-row">
+              <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">体操競技 全日本選手権出場</p>
+                <p class="coach-row__name">白石 大輔 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">体操</span><span class="tag tag--soft">学校体育</span><span class="tag tag--soft">オンライン可</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(143)</span></span>
+              <span>60分 <b>7,000円</b></span>
+              <span>東京</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c06" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">体操</span><span class="tag tag--soft">学校体育</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(143)</span></span>
-          <span>60分 <b>7,000円〜</b></span>
-          <span>東京</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="新体操">
-        <div class="coach-row">
-          <span class="avatar avatar--a"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">新体操 元国体選手｜オンライン対応可</p>
-            <p class="coach-row__name">藤井 かなえ コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c07"
+          data-sports="新体操" data-area="オンライン"
+          data-price="6500" data-rate="5.0" data-cnt="37"
+          data-online="1" data-order="6"
+          data-search="藤井 かなえ 藤井かなえ 新体操 元国体選手｜オンライン対応可 オンライン 新体操">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c07.html">
+            <div class="coach-row">
+              <span class="avatar avatar--a"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">新体操 元国体選手｜オンライン対応可</p>
+                <p class="coach-row__name">藤井 かなえ コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">新体操</span><span class="tag tag--soft">オンライン可</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(37)</span></span>
+              <span>60分 <b>6,500円</b></span>
+              <span>オンライン</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c07" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">新体操</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(37)</span></span>
-          <span>60分 <b>6,500円〜</b></span>
-          <span>オンライン</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="バスケットボール">
-        <div class="coach-row">
-          <span class="avatar avatar--f"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">元プロバスケットボール選手</p>
-            <p class="coach-row__name">桑原 亮介 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c08"
+          data-sports="バスケットボール" data-area="大阪"
+          data-price="7500" data-rate="4.9" data-cnt="89"
+          data-online="0" data-order="7"
+          data-search="桑原 亮介 桑原亮介 元プロバスケットボール選手 大阪 バスケットボール">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c08.html">
+            <div class="coach-row">
+              <span class="avatar avatar--f"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">元プロバスケットボール選手</p>
+                <p class="coach-row__name">桑原 亮介 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">バスケットボール</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(89)</span></span>
+              <span>60分 <b>7,500円</b></span>
+              <span>大阪</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c08" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">バスケットボール</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(89)</span></span>
-          <span>60分 <b>7,500円〜</b></span>
-          <span>大阪</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="テニス">
-        <div class="coach-row">
-          <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">テニス指導歴15年｜ジュニア強化担当</p>
-            <p class="coach-row__name">三谷 結衣 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c09"
+          data-sports="テニス" data-area="愛知"
+          data-price="6000" data-rate="4.8" data-cnt="65"
+          data-online="0" data-order="8"
+          data-search="三谷 結衣 三谷結衣 テニス指導歴15年｜ジュニア強化担当 愛知 テニス">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c09.html">
+            <div class="coach-row">
+              <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">テニス指導歴15年｜ジュニア強化担当</p>
+                <p class="coach-row__name">三谷 結衣 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">テニス</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.8">★★★★★</span> <b>4.8</b> <span class="rating__count">(65)</span></span>
+              <span>60分 <b>6,000円</b></span>
+              <span>愛知</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c09" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">テニス</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.8">★★★★★</span> <b>4.8</b> <span class="rating__count">(65)</span></span>
-          <span>60分 <b>6,000円〜</b></span>
-          <span>愛知</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="かけっこ,体づくり">
-        <div class="coach-row">
-          <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">元実業団アメリカンフットボール選手</p>
-            <p class="coach-row__name">大河内 翔 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c10"
+          data-sports="かけっこ,体づくり" data-area="東京"
+          data-price="6800" data-rate="5.0" data-cnt="44"
+          data-online="1" data-order="9"
+          data-search="大河内 翔 大河内翔 元実業団アメリカンフットボール選手 東京 かけっこ 体づくり">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c10.html">
+            <div class="coach-row">
+              <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">元実業団アメリカンフットボール選手</p>
+                <p class="coach-row__name">大河内 翔 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">かけっこ</span><span class="tag tag--soft">体づくり</span><span class="tag tag--soft">オンライン可</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(44)</span></span>
+              <span>60分 <b>6,800円</b></span>
+              <span>東京</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c10" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">かけっこ</span><span class="tag tag--soft">体づくり</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中5.0">★★★★★</span> <b>5.0</b> <span class="rating__count">(44)</span></span>
-          <span>60分 <b>6,800円〜</b></span>
-          <span>東京</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="水泳">
-        <div class="coach-row">
-          <span class="avatar avatar--c"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">現役ライフセーバー｜指導歴20年以上</p>
-            <p class="coach-row__name">立花 志保 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c11"
+          data-sports="水泳" data-area="神奈川"
+          data-price="6200" data-rate="4.9" data-cnt="71"
+          data-online="0" data-order="10"
+          data-search="立花 志保 立花志保 現役ライフセーバー｜指導歴20年以上 神奈川 水泳">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c11.html">
+            <div class="coach-row">
+              <span class="avatar avatar--c"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">現役ライフセーバー｜指導歴20年以上</p>
+                <p class="coach-row__name">立花 志保 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">水泳</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(71)</span></span>
+              <span>60分 <b>6,200円</b></span>
+              <span>神奈川</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c11" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">水泳</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(71)</span></span>
-          <span>60分 <b>6,200円〜</b></span>
-          <span>神奈川</span>
-        </p>
-      </a></li>
-      <li><a class="coach-tile" href="../pages/coaches.html" data-sports="ダンス">
-        <div class="coach-row">
-          <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
-          <div class="coach-row__body">
-            <p class="coach-row__role">ダンスインストラクター｜振付師</p>
-            <p class="coach-row__name">神田 悠介 コーチ</p>
-          </div>
+      </li>
+      <li class="coach-item" data-id="c12"
+          data-sports="ダンス" data-area="オンライン"
+          data-price="5500" data-rate="4.9" data-cnt="52"
+          data-online="1" data-order="11"
+          data-search="神田 悠介 神田悠介 ダンスインストラクター｜振付師 オンライン ダンス">
+        <div class="coach-tile">
+          <a class="coach-tile__link" href="coach-c12.html">
+            <div class="coach-row">
+              <span class="avatar avatar--b"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-person"/></svg></span>
+              <div class="coach-row__body">
+                <p class="coach-row__role">ダンスインストラクター｜振付師</p>
+                <p class="coach-row__name">神田 悠介 コーチ</p>
+              </div>
+            </div>
+            <p class="coach-tile__tags"><span class="tag tag--soft">ダンス</span><span class="tag tag--soft">オンライン可</span></p>
+            <p class="coach-tile__meta">
+              <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(52)</span></span>
+              <span>60分 <b>5,500円</b></span>
+              <span>オンライン</span>
+            </p>
+          </a>
+          <button class="fav" type="button" data-id="c12" aria-pressed="false" aria-label="お気に入りに追加">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>
+          </button>
         </div>
-        <p class="coach-tile__tags"><span class="tag tag--soft">ダンス</span></p>
-        <p class="coach-tile__meta">
-          <span class="rating"><span class="rating__stars" role="img" aria-label="5点満点中4.9">★★★★★</span> <b>4.9</b> <span class="rating__count">(52)</span></span>
-          <span>60分 <b>5,500円〜</b></span>
-          <span>オンライン</span>
-        </p>
-      </a></li>
+      </li>
     </ul>
-    <p class="tabs__empty" id="coachEmpty" hidden>該当するコーチが見つかりませんでした。</p>
-
-    <nav class="pager" aria-label="ページ送り">
-      <span class="is-current" aria-current="page">1</span>
-      <a href="../pages/coaches.html">2</a>
-      <a href="../pages/coaches.html">3</a>
-      <a href="../pages/coaches.html">次へ ›</a>
-    </nav>
+    <p class="tabs__empty" id="coachEmpty" hidden>
+      条件に合うコーチが見つかりませんでした。<br>条件をクリアして、もう一度お試しください。
+    </p>
   </div>
 </section>
 
@@ -437,8 +655,8 @@
     <details class="fmenu">
       <summary>コンテンツ</summary>
       <ul>
-        <li><a href="../pages/categories.html">競技カテゴリーから探す</a></li>
         <li><a href="../pages/coaches.html">コーチから探す</a></li>
+        <li><a href="../pages/categories.html">競技カテゴリーから探す</a></li>
         <li><a href="../pages/lessons.html">グループレッスン / イベント</a></li>
         <li><a href="../pages/reviews.html">口コミ一覧</a></li>
       </ul>
@@ -459,21 +677,35 @@
 </footer>
 
 <!-- ============================================================
-     チャットウィジェット（画面右下に固定）
+     画面下に固定するパーツ
      ============================================================ -->
-<div class="chat" id="chat">
-  <button class="chat__close" id="chatClose" type="button" aria-label="チャットの案内を閉じる">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-  </button>
-  <button class="chat__bubble" type="button" data-open-chat>
-    チャット受付中です！<br>お気軽にお問合せください
-  </button>
-  <span class="chat__avatar" aria-hidden="true">
-    <svg viewBox="0 0 48 48"><use href="#i-person"/></svg>
-  </span>
-</div>
+<p class="chat-tip" id="chatTip" hidden>
+  チャットで相談できます（9:00〜）
+  <button class="chat-tip__close" id="chatTipClose" type="button">閉じる</button>
+</p>
 
-<p class="hours">9:00から営業</p>
+<button class="fab fab--top is-hidden" id="topBtn" type="button" aria-label="ページの先頭に戻る">
+  <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-up"/></svg>
+</button>
+
+<button class="fab fab--chat" type="button" data-open-chat aria-label="チャットで相談する">
+  <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-chat"/></svg>
+</button>
+
+<nav class="tabbar" aria-label="かんたんメニュー">
+  <a href="../index.html">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-home"/></svg>ホーム
+  </a>
+  <a href="../pages/coaches.html" aria-current="page">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-search"/></svg>探す
+  </a>
+  <a href="../pages/coaches.html#fav=1">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-heart"/></svg>お気に入り
+  </a>
+  <a href="../pages/guide.html">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-guide"/></svg>ガイド
+  </a>
+</nav>
 
 <script src="../assets/js/main.js"></script>
 </body>
